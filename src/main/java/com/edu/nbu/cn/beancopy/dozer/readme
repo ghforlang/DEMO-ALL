@@ -1,0 +1,5 @@
+参考文档：
+http://dozer.sourceforge.net
+
+//同时支持xml、注解、api方式使用
+其中，xml方式与spring无缝衔接

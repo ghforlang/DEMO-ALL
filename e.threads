@@ -1,0 +1,44 @@
+Thread 0x6c1c09208
+
+  locals:
+
+Thread 0x6c1c09090
+
+  locals:
+
+Thread 0x6c1c087b8
+
+  locals:
+
+Thread 0x6c1c08930
+
+  locals:
+
+Thread 0x6c1c08aa8
+
+  locals:
+
+Thread 0x6c1c08c20
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:143)
+  at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:164)
+  at java.lang.ref.Finalizer$FinalizerThread.run()V (Finalizer.java:209)
+
+  locals:
+    objectId=0x6c1c09640, line=1
+    objectId=0x6c1c09630, line=1
+    objectId=0x6c1c09640, line=2
+    objectId=0x6c1c08c20, line=3
+    objectId=0x6c1c09660, line=3
+
+Thread 0x6c1c08da0
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.Object.wait()V (Object.java:502)
+  at java.lang.ref.Reference.tryHandlePending(Z)Z (Reference.java:191)
+  at java.lang.ref.Reference$ReferenceHandler.run()V (Reference.java:153)
+
+  locals:
+    objectId=0x6c1c010c0, line=1
+    objectId=0x6c1c010c0, line=2
+    objectId=0x6c1c08da0, line=3
+

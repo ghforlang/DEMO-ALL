@@ -1,0 +1,24 @@
+
+<!-- spring方式使用dozer -->
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+        <!--<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"-->
+        <!--        "http://www.springframework.org/dtd/spring-beans.dtd">-->
+        <!--<beans default-lazy-init="false">-->
+        <!--    <bean id="org.dozer.Mapper" class="org.dozer.DozerBeanMapper">-->
+        <!--        <property name="mappingFiles">-->
+        <!--            <list>-->
+        <!--                <value>systempropertymapping1.xml</value>-->
+        <!--                <value>dozerBeanMapping.xml</value>-->
+        <!--                <value>injectedCustomConverter.xml</value>-->
+        <!--            </list>-->
+        <!--        </property>-->
+        <!--        <property name="customConvertersWithId">-->
+        <!--            <map>-->
+        <!--                <entry key="CustomConverterWithId"-->
+        <!--                       ref="configurableConverterBeanInstance1"/>-->
+        <!--                <entry key="CustomConverterWithId2"-->
+        <!--                       ref="configurableConverterBeanInstance2"/>-->
+        <!--            </map>-->
+        <!--        </property>-->
+        <!--    </bean>-->
+        <!--</beans>-->
