@@ -16,7 +16,6 @@ public class ProxyDemo {
 //       sellWine();
 //       sellCosmetics();
        sellWineByCglib();
-//        business.sell(cosmetics);
     }
 
     private static void sellWine(){

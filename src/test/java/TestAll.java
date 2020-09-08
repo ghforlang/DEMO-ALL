@@ -17,7 +17,8 @@ public class TestAll extends TestBase{
 
     public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
 //        test1();
-        test2();
+//        test2();
+        testOrika2();
     }
 
     public static void test1() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
