@@ -16,15 +16,17 @@ import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Threads;
+import org.openjdk.jmh.annotations.Timeout;
 import org.openjdk.jmh.annotations.Warmup;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode(Mode.All)
+@BenchmarkMode({Mode.Throughput,Mode.AverageTime,Mode.SingleShotTime})
 @Threads(1)
 @State(Scope.Thread)
-//@Timeout(time=10)
+@Timeout(time=1,timeUnit = TimeUnit.MINUTES)
 @Measurement(time = 1,iterations=5)
 public class HelperBenchMark {
 
@@ -39,7 +41,7 @@ public class HelperBenchMark {
 
     @Warmup(iterations = 3)
     @Benchmark
-    public void realImplement(){
+    public void baseLine(){
         StudentHelper helper = new StudentHelper();
         helper.create(param);
     }
