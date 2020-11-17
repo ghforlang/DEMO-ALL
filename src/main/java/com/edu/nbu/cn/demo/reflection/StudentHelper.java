@@ -1,7 +1,9 @@
 package com.edu.nbu.cn.demo.reflection;
 
 
-public class StudentHelper extends AbstractEntityHelper{
+import com.edu.nbu.cn.demo.reflection.javassist.AbstractEntityHelper;
+
+public class StudentHelper extends AbstractEntityHelper {
 
     @Override
     public Student create(Param param) {

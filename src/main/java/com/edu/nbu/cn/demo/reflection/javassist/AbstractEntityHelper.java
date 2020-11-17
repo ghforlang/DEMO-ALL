@@ -1,4 +1,6 @@
-package com.edu.nbu.cn.demo.reflection;
+package com.edu.nbu.cn.demo.reflection.javassist;
+
+import com.edu.nbu.cn.demo.reflection.Param;
 
 public abstract class AbstractEntityHelper {
 

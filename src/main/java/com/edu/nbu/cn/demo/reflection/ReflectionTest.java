@@ -1,6 +1,8 @@
 package com.edu.nbu.cn.demo.reflection;
 
 
+import com.edu.nbu.cn.demo.reflection.javassist.AbstractEntityHelper;
+import com.edu.nbu.cn.demo.reflection.javassist.HelperFactory;
 import javassist.CannotCompileException;
 import javassist.NotFoundException;
 

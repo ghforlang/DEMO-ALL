@@ -1,10 +1,10 @@
-package com.edu.nbu.cn.demo.reflection;
+package com.edu.nbu.cn.demo.reflection.javassist;
 
+import com.edu.nbu.cn.demo.reflection.Param;
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtConstructor;
-import javassist.CtMember;
 import javassist.CtMethod;
 import javassist.CtNewMethod;
 import javassist.NotFoundException;
@@ -20,7 +20,7 @@ import java.util.Objects;
 public final class HelperFactory {
 
 
-    private static final Map<Class<?>,AbstractEntityHelper> ENTITY_HELPER_MAP = new HashMap<>();
+    private static final Map<Class<?>, AbstractEntityHelper> ENTITY_HELPER_MAP = new HashMap<>();
 
     public static AbstractEntityHelper createEntityHelper(Class<?> entityClazz) throws NotFoundException, CannotCompileException, IllegalAccessException, InstantiationException, IOException {
         if(Objects.isNull(entityClazz)){
