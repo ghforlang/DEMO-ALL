@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class StudentBO {
+public class StudentBO  implements Cloneable{
     private Long id;
     private String name;
     private LocalDateTime birthDay;
@@ -39,5 +39,10 @@ public class StudentBO {
         scoreAndCourseBOList.add(scoreAndCourseBO2);
         student.setScoreAndCourseBOList(scoreAndCourseBOList);
         return student;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

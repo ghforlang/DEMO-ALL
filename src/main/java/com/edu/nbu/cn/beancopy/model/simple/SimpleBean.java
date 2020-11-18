@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class SimpleBean {
+public class SimpleBean implements Cloneable{
     private Long id;
     private String uuid;
     private String name;
@@ -18,5 +18,10 @@ public class SimpleBean {
         simpleBean.setName("simpleBean");
         simpleBean.setUuid("123135alxojgoasfl2os");
         return simpleBean;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
