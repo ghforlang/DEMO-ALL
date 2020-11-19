@@ -35,5 +35,8 @@ public class BeanCopy {
         System.out.println("student.name" + student.getName().hashCode() + ",clonedStudent.name$" + clonedStudent.getName().hashCode());
         System.out.println("student.birthDay$" + student.getBirthDay().hashCode() + ",clonedStudent.birthday$" + clonedStudent.getBirthDay().hashCode());
         System.out.println("student.scoreAndCourseBOList" + student.getScoreAndCourseBOList().hashCode() + ",clonedStudent.scoreAndCourseBOList" + clonedStudent.getScoreAndCourseBOList().hashCode());
+
+        //深拷贝
+
     }
 }
