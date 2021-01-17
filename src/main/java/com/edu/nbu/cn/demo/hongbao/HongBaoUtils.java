@@ -6,6 +6,8 @@ import java.util.Random;
 
 /**
  * 红包工具探究
+ * 这里提到两个比较有意思的类Random 与ThreadlocalRandom
+ *
  */
 public class HongBaoUtils {
 
