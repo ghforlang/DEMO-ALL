@@ -12,17 +12,12 @@ import com.edu.nbu.cn.beancopy.model.simple.SimpleBeanDTO;
 import org.dozer.DozerBeanMapper;
 import org.dozer.classmap.RelationshipType;
 import org.dozer.loader.api.BeanMappingBuilder;
+import org.dozer.loader.api.FieldsMappingOptions;
 import org.dozer.loader.api.TypeMappingOptions;
 
 import java.time.LocalDateTime;
 
-import static org.dozer.loader.api.FieldsMappingOptions.collectionStrategy;
 import static org.dozer.loader.api.FieldsMappingOptions.customConverter;
-import static org.dozer.loader.api.FieldsMappingOptions.hintA;
-import static org.dozer.loader.api.FieldsMappingOptions.hintB;
-import static org.dozer.loader.api.FieldsMappingOptions.useMapId;
-import static org.dozer.loader.api.TypeMappingOptions.mapId;
-import static org.dozer.loader.api.TypeMappingOptions.mapNull;
 
 public class DozerDemo {
 
@@ -51,12 +46,12 @@ public class DozerDemo {
         BeanMappingBuilder builder =  new BeanMappingBuilder(){
             @Override
             protected void configure() {
-                mapping(StudentBO.class, StudentDTO.class, TypeMappingOptions.oneWay(),mapId("a"),mapNull(true))
-                        .fields("birthDay","birth",hintA(LocalDateTime.class),hintB(String.class),useMapId("a"),customConverter(DozerLocalDateTime2StringConverter.class))
-                        .fields("scoreAndCourseBOList","scoreAndCourseDTOList",hintA(ScoreAndCourseBO.class),hintB(ScoreAndCourseDTO.class),useMapId("a"),collectionStrategy(true, RelationshipType.NON_CUMULATIVE));
+                mapping(StudentBO.class, StudentDTO.class, TypeMappingOptions.oneWay(), TypeMappingOptions.mapId("a"), TypeMappingOptions.mapNull(true))
+                        .fields("birthDay","birth", FieldsMappingOptions.hintA(LocalDateTime.class), FieldsMappingOptions.hintB(String.class), FieldsMappingOptions.useMapId("a"),customConverter(DozerLocalDateTime2StringConverter.class))
+                        .fields("scoreAndCourseBOList","scoreAndCourseDTOList", FieldsMappingOptions.hintA(ScoreAndCourseBO.class), FieldsMappingOptions.hintB(ScoreAndCourseDTO.class), FieldsMappingOptions.useMapId("a"), FieldsMappingOptions.collectionStrategy(true, RelationshipType.NON_CUMULATIVE));
 
-                mapping(ScoreAndCourseBO.class, ScoreAndCourseDTO.class, TypeMappingOptions.oneWay(),mapId("b"),mapNull(true))
-                        .fields("scoreType","scoreName",hintA(Integer.class),hintB(String.class),useMapId("b"),customConverter(DozerType2NameConverter.class));
+                mapping(ScoreAndCourseBO.class, ScoreAndCourseDTO.class, TypeMappingOptions.oneWay(), TypeMappingOptions.mapId("b"), TypeMappingOptions.mapNull(true))
+                        .fields("scoreType","scoreName", FieldsMappingOptions.hintA(Integer.class), FieldsMappingOptions.hintB(String.class), FieldsMappingOptions.useMapId("b"),customConverter(DozerType2NameConverter.class));
             }
         };
 
