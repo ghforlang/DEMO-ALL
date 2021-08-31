@@ -25,7 +25,7 @@ public class TLTest {
         try {
             //创建一个新的类加载器，从AAA.jar里加载AAA类
             URL[] urls = new URL[1];
-            urls[0] = new URL("file:E:\\workspace\\JVM-OOM\\target\\classes");
+            urls[0] = new URL("file:E:\\workspace\\DEMO-ALL\\target\\classes");
             tt.aaa=new TestLoader(urls).loadClass("com.edu.nbu.cn.stackoverflow.uncollected.AA").newInstance();
             //保证类加载器对象能进入到old里，因为ygc是不会对classLoader做清理的
             for(int i=0;i<10;i++){

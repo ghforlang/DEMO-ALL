@@ -27,12 +27,12 @@ public class TestJavaPoet {
     public static void main(String[] args) {
         TypeSpec typeSpec = generateClass(Activity.class);
         JavaFile file = JavaFile.builder("com.edu.nbu.cn.demo.javapoet.model",typeSpec).build();
-        File clazzFile = new File("/Users/charen/my-project/JVM-OOM/src/main/java/com/edu/nbu/cn/demo/javapoet/model");
+        File clazzFile = new File("/Users/charen/my-project/DEMO-ALL/src/main/java/com/edu/nbu/cn/demo/javapoet/model");
         file.writeTo(clazzFile);
 
         TypeSpec typeSpec1 = generateAbstractClass(Activity.class);
         JavaFile file1 = JavaFile.builder("com.edu.nbu.cn.demo.javapoet.model",typeSpec1).build();
-        File abstractClazzFile = new File("/Users/charen/my-project/JVM-OOM/src/main/java/com/edu/nbu/cn/demo/javapoet/model");
+        File abstractClazzFile = new File("/Users/charen/my-project/DEMO-ALL/src/main/java/com/edu/nbu/cn/demo/javapoet/model");
         file1.writeTo(abstractClazzFile);
     }
 

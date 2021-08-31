@@ -77,7 +77,7 @@ public final class HelperFactory {
 
         CtMethod ctMethod = CtNewMethod.make(sb.toString(),entityHelperClazz);
         entityHelperClazz.addMethod(ctMethod);
-//        entityHelperClazz.writeFile("E:/workspace/JVM-OOM/reflection");
+//        entityHelperClazz.writeFile("E:/workspace/DEMO-ALL/reflection");
 
         Class<?> javaClazz = entityHelperClazz.toClass();
         helper = (AbstractEntityHelper) javaClazz.newInstance();

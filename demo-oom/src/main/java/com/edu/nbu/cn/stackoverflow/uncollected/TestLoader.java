@@ -17,7 +17,7 @@ public class TestLoader extends URLClassLoader {
             try {
                 count=1;
                 URL[] urls = new URL[1];
-                urls[0] = new URL("file:E:\\workspace\\JVM-OOM\\target\\classes");
+                urls[0] = new URL("file:E:\\workspace\\DEMO-ALL\\target\\classes");
                 return new TestLoader(urls).loadClass("com.edu.nbu.cn.stackoverflow.uncollected.BB");
             }catch (Exception e){
                 e.printStackTrace();

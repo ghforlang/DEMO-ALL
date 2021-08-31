@@ -15,7 +15,7 @@ import java.nio.channels.WritableByteChannel;
  */
 public class MyClassLoader extends ClassLoader{
 
-    private static final String filePath = "/Users/fanwenhao/my-projects/JVM-OOM/target/classes/com/edu/nbu/cn/demo/classloader/TestCl.class";
+    private static final String filePath = "/Users/fanwenhao/my-projects/DEMO-ALL/target/classes/com/edu/nbu/cn/demo/classloader/TestCl.class";
 
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {

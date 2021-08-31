@@ -17,7 +17,7 @@ public class CglibCopierUtils {
 
 
     public static void main(String[] args) {
-        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "E:\\workspace\\JVM-OOM\\reflection\\com\\edu\\nbu\\cn\\demo\\reflection");
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "E:\\workspace\\DEMO-ALL\\reflection\\com\\edu\\nbu\\cn\\demo\\reflection");
         SimpleBeanDTO beanDTO = new SimpleBeanDTO();
         copy(SimpleBean.class, SimpleBeanDTO.class,simpleBean,beanDTO);
     }

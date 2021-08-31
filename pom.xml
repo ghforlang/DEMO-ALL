@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.edu.nbu.cn</groupId>
-    <artifactId>JVM-OOM</artifactId>
+    <artifactId>DEMO-ALL</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
