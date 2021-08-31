@@ -29,6 +29,7 @@
         <module>demo-innerclass</module>
         <module>demo-nio</module>
         <module>demo-netty</module>
+        <module>demo-mybatis-ext</module>
     </modules>
 
     <properties>
