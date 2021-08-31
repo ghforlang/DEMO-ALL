@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+ http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+<!--        <date-format>yyyy-MM-dd HH:mm:ss.SSS</date-format>-->
+<!--          双向转换器 -->
+<!--        <custom-converters>-->
+<!--            <converter type="com.edu.nbu.cn.DozerLocalDateTime2StringConverter">-->
+<!--                <class-a>java.time.LocalDateTime</class-a>-->
+<!--                <class-b>java.lang.String</class-b>-->
+<!--            </converter>-->
+
+<!--            <converter type="com.edu.nbu.cn.DozerType2NameConverter">-->
+<!--                <class-a>java.lang.Integer</class-a>-->
+<!--                <class-b>java.lang.String</class-b>-->
+<!--            </converter>-->
+<!--        </custom-converters>-->
+    </configuration>
+
+    <mapping date-format="yyyy-MM-dd HH:mm:ss.SSS" stop-on-errors="false">
+        <class-a>StudentBO</class-a>
+        <class-b>StudentDTO</class-b>
+        <field custom-converter="DozerLocalDateTime2StringConverter">
+            <a>birthDay</a>
+            <b>birth</b>
+            <a-hint>java.time.LocalDateTime</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+
+<!--        <field-exclude>-->
+<!--            <a>xxx</a>-->
+<!--            <b>xxx</b>-->
+<!--        </field-exclude>-->
+        <field>
+            <a>scoreAndCourseBOList</a>
+            <b>scoreAndCourseDTOList</b>
+            <a-hint>ScoreAndCourseBO</a-hint>
+            <b-hint>ScoreAndCourseDTO</b-hint>
+        </field>
+    </mapping>
+
+    <mapping stop-on-errors="false">
+        <class-a>ScoreAndCourseBO</class-a>
+        <class-b>ScoreAndCourseDTO</class-b>
+        <!--        <field-exclude>-->
+        <!--            <a>xxx</a>-->
+        <!--            <b>xxx</b>-->
+        <!--        </field-exclude>-->
+        <field custom-converter="DozerType2NameConverter">
+            <a>scoreType</a>
+            <b>scoreName</b>
+            <a-hint>java.lang.Integer</a-hint>
+            <b-hint>java.lang.String</b-hint>
+        </field>
+    </mapping>
+
+</mappings>
