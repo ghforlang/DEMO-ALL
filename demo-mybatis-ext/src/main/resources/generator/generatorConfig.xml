@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="base_resource" targetRuntime="MyBatis3">
+        <!-- 分页插件 -->
+        <plugin type="com.edu.nbu.cn.mybatis.plugins.CodeGeneratorPlugin"/>
+
+        <!-- 注释，修改配置会影响MySQLPaginationPlugin的执行 -->
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 / false:否，代码merge会被禁用 -->
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="false"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/employees?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2B8"
+                driverClass="org.gjt.mm.mysql.Driver" password="123456" userId="root"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.edu.nbu.cn.mybatis.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置 -->
+        <javaClientGenerator targetPackage="com.edu.nbu.cn.mybatis.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 数据库表对应类 -->
+        <table domainObjectName="Employees" tableName="employees">
+            <generatedKey column="emp_no" sqlStatement="JDBC"/>
+<!--            <columnOverride column="is_deleted" javaType="java.lang.Boolean"/>-->
+        </table>
+    </context>
+</generatorConfiguration>
