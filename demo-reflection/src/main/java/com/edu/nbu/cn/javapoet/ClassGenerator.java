@@ -1,8 +1,7 @@
-package com.edu.nbu.cn.demo.javapoet;
+package com.edu.nbu.cn.javapoet;
 
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import sun.reflect.generics.scope.MethodScope;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -20,10 +19,10 @@ public class ClassGenerator {
 
         Method[] methods = parentClazz.getDeclaredMethods();
         List<MethodSpec> methodSpecList = new ArrayList<>();
-        Arrays.stream(methods).forEach(method -> methodSpecList.add(MethodGenerator.generate(method)));
+        Arrays.stream(methods).forEach(method -> methodSpecList.add(com.edu.nbu.cn.javapoet.MethodGenerator.generate(method)));
 
         TypeSpec typeSpec = TypeSpec.classBuilder(clazzName)
-                .addAnnotation(JavaPoet.class)
+                .addAnnotation(com.edu.nbu.cn.javapoet.JavaPoet.class)
                 .addModifiers(javax.lang.model.element.Modifier.PUBLIC)
                 .addMethods(methodSpecList)
                 .addSuperinterface(parentClazz)

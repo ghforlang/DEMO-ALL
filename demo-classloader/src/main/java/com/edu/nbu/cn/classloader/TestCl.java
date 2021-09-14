@@ -10,6 +10,6 @@ public class TestCl {
 
 
     public void testDemo(){
-        System.out.println("testDemo3");
+        System.out.println("testDemo");
     }
 }

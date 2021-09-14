@@ -1,4 +1,4 @@
-package com.edu.nbu.cn.demo.javapoet;
+package com.edu.nbu.cn.javapoet;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

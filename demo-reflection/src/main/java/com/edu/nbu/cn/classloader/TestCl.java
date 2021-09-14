@@ -1,4 +1,4 @@
-package com.edu.nbu.cn.demo.classloader;
+package com.edu.nbu.cn.classloader;
 
 public class TestCl {
 

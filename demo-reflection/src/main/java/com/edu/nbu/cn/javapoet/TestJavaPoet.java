@@ -1,6 +1,6 @@
-package com.edu.nbu.cn.demo.javapoet;
+package com.edu.nbu.cn.javapoet;
 
-import com.edu.nbu.cn.demo.javapoet.model.ActivityInterface;
+import com.edu.nbu.cn.javapoet.model.ActivityInterface;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
 

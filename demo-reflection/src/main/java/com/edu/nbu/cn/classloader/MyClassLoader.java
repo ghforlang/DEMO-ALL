@@ -1,4 +1,4 @@
-package com.edu.nbu.cn.demo.classloader;
+package com.edu.nbu.cn.classloader;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ import java.nio.channels.WritableByteChannel;
  */
 public class MyClassLoader extends ClassLoader{
 
-    private static final String filePath = "/Users/fanwenhao/my-projects/DEMO-ALL/target/classes/com/edu/nbu/cn/demo/classloader/TestCl.class";
+    private static final String filePath = "/Users/fanwenhao/my-projects/DEMO-ALL/target/classes/com/edu/nbu/cn/classloader/TestCl.class";
 
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {

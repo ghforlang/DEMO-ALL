@@ -1,4 +1,4 @@
-package com.edu.nbu.cn.demo.javapoet.model;
+package com.edu.nbu.cn.javapoet.model;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,5 @@
 package com.edu.nbu.cn.innerclass;
 
-import com.edu.nbu.cn.demo.registrar.MyAutoConfigurationBeanRegistrar;
 
 import java.util.Arrays;
 import java.util.List;

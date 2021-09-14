@@ -17,7 +17,7 @@ import java.util.Objects;
  */
 public class MyClassLoader extends ClassLoader{
 
-    private static final String clazzPath = "/Users/charen/my-project/DEMO-ALL/demo-classloader/target/classes/classloader/TestCl.class";
+    private static final String clazzPath = "/Users/charen/my-project/DEMO-ALL/demo-classloader/target/classes/com/edu/nbu/cn/classloader/TestCl.class";
     private static final String PREFIX_LANG_PAK = "java.lang.";
     @SneakyThrows
     @Override

@@ -1,6 +1,6 @@
-package com.edu.nbu.cn.demo.javapoet;
+package com.edu.nbu.cn.javapoet;
 
-import com.edu.nbu.cn.demo.javapoet.model.A;
+import com.edu.nbu.cn.javapoet.model.A;
 import com.squareup.javapoet.MethodSpec;
 
 import java.lang.reflect.Method;
