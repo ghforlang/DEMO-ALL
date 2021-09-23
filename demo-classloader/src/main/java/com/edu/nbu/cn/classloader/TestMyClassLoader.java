@@ -11,7 +11,7 @@ public class TestMyClassLoader {
             Class<?> clazz = myClassLoader.loadClass("com.edu.nbu.cn.classloader.TestCl");
             TestCl testCl = (TestCl) clazz.newInstance();
             testCl.testDemo();
-            TimeUnit.SECONDS.sleep(1L);
+            TimeUnit.SECONDS.sleep(3L);
         }
     }
 }
