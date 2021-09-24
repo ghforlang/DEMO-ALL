@@ -1,12 +1,12 @@
-package com.edu.nbu.cn.demo.benchmark;
+package com.edu.nbu.cn.benchmark;
 
 
-import com.edu.nbu.cn.demo.reflection.javassist.AbstractEntityHelper;
-import com.edu.nbu.cn.demo.reflection.javassist.HelperFactory;
-import com.edu.nbu.cn.demo.reflection.Param;
-import com.edu.nbu.cn.demo.reflection.Student;
-import com.edu.nbu.cn.demo.reflection.StudentHelper;
-import com.edu.nbu.cn.demo.reflection.StudentReflectionHelper;
+import com.edu.nbu.cn.reflection.javassist.AbstractEntityHelper;
+import com.edu.nbu.cn.reflection.javassist.HelperFactory;
+import com.edu.nbu.cn.reflection.Param;
+import com.edu.nbu.cn.reflection.Student;
+import com.edu.nbu.cn.reflection.StudentHelper;
+import com.edu.nbu.cn.reflection.StudentReflectionHelper;
 import javassist.CannotCompileException;
 import javassist.NotFoundException;
 import org.openjdk.jmh.annotations.Benchmark;

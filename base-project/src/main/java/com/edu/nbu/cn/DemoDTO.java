@@ -30,8 +30,8 @@ public class DemoDTO {
         if(StringUtils.isBlank(storeCodes)){
             return null;
         }
-        DemoD d1 = DemoD.valueOf(storeCodes);
-        DemoD d2 = DemoD.valueOf(orgCodes);
+        DemoD d1 = DemoD.of(Arrays.asList(StringUtils.split(storeCodes,',')),false);
+        DemoD d2 = DemoD.of(Arrays.asList(StringUtils.split(orgCodes,',')),false);
         DemoDTO dto = new DemoDTO(d1,d2);
         return dto;
     }
@@ -39,7 +39,7 @@ public class DemoDTO {
     public static void main(String[] args) {
         DemoDTO demoDTO = valueOf("store1,store2","org1,org2");
         System.out.println(demoDTO);
-//        System.out.println(System.identityHashCode(demoDTO));
+        System.out.println(System.identityHashCode(demoDTO));
     }
 
     @Override

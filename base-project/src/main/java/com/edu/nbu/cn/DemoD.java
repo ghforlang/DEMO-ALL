@@ -2,11 +2,11 @@ package com.edu.nbu.cn;
 
 import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,17 +19,18 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@AllArgsConstructor(staticName="of")
+@Data
 public class DemoD {
     private List<String> greOrgCodes;
     private Boolean greyEnable = false;
 
-    static DemoD valueOf(String codes){
-        if(StringUtils.isBlank(codes)){
-            return null;
-        }
-        return new DemoD(Arrays.asList(StringUtils.split(codes,',')),true);
-    }
+//    static DemoD valueOf(String codes){
+//        if(StringUtils.isBlank(codes)){
+//            return null;
+//        }
+//        return new DemoD(Arrays.asList(StringUtils.split(codes,',')),true);
+//    }
 
     @Override
     public String toString(){

@@ -1,7 +1,7 @@
 package com.edu.nbu.cn.ddd.repository;
 
 
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 public interface Repository<T extends Aggregate<ID>,ID extends Identifier> {
 
