@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.edu.nbu.cn.mybatis.mapper.BasicHealthInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="people_id" property="peopleId" jdbcType="VARCHAR" />
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="id_card_no" property="idCardNo" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="healthExtraMap" type="com.edu.nbu.cn.mybatis.model.ehr.HealthInfo" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="people_id" property="peopleId" jdbcType="VARCHAR" />
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="id_card_no" property="idCardNo" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="abo_blood_type_name" property="aboBloodTypeName"/>
+        <result column="abo_blood_type_id" property="aboBloodTypeId"/>
+        <result column="rh_blood_type_id" property="rhBloodTypeId"/>
+        <result column="rh_blood_type_name" property="rhBloodTypeName"/>
+        <result column="martial_status_id" property="martialStatusId"/>
+        <result column="martial_status_name" property="martialStatusName"/>
+        <result column="fertility_status_id" property="fertilityStatusId"/>
+        <result column="fertility_status_name" property="fertilityStatusName"/>
+        <result column="family_history_is_normal" property="familyHistoryIsNormal"/>
+        <result column="family_diseases" property="familyDiseases"/>
+        <result column="diet_taste_is_normal" property="dietTasteIsNormal"/>
+        <result column="diet_taste_list" property="dietTasteList"/>
+        <result column="respiratory_rate" property="respiratoryRate"/>
+        <result column="sport_frequency_name" property="sportFrequencyName"/>
+        <result column="sport_frequency_id" property="sportFrequencyId"/>
+        <result column="sleeping_situation_id" property="sleepingSituationId"/>
+        <result column="sleeping_situation_name" property="sleepingSituationName"/>
+        <result column="past_diseases" property="pastDiseases"/>
+        <result column="past_illness_is_normal" property="pastIllnessIsNormal"/>
+        <result column="smoking_status_id" property="smokingStatusId"/>
+        <result column="smoking_status_name" property="smokingStatusName"/>
+        <result column="drinking_status_name" property="drinking_status_name"/>
+        <result column="drinking_status_id" property="drinking_status_id"/>
+        <result column="sleeping_hours_id" property="sleeping_hours_id"/>
+        <result column="sleeping_hours_code" property="sleeping_hours_code"/>
+        <result column="province_id" property="province_id"/>
+        <result column="province_name" property="province_name"/>
+        <result column="city_id" property="city_id"/>
+        <result column="city_name" property="city_name"/>
+        <result column="county_id" property="county_id"/>
+        <result column="county_name" property="county_name"/>
+        <result column="township_id" property="township_id"/>
+        <result column="township_name" property="township_name"/>
+        <result column="village_id" property="village_id"/>
+        <result column="village_name" property="village_name"/>
+        <result column="address" property="address"/>
+
+    </resultMap>
+
+    <resultMap id="bloodFatMap" type="com.edu.nbu.cn.mybatis.model.ehr.BloodFatInfo" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="people_id" property="peopleId" jdbcType="VARCHAR" />
+        <result column="biz_id" property="bizId" jdbcType="VARCHAR" />
+
+        <result column="name" property="name" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="indicatorMap" type="com.edu.nbu.cn.mybatis.model.ehr.HealthIndicatorInfo" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="people_id" property="peopleId" jdbcType="VARCHAR" />
+        <result column="biz_id" property="bizId" jdbcType="VARCHAR" />
+
+        <result column="name" property="name" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <update id="updateId" parameterType="com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo">
+        update health_record_basichealthinformation_df_20220217
+        set id = #{id}
+        where people_id = #{peopleId}
+    </update>
+
+    <update id="updateIdCardNo" parameterType="com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo">
+    update health_record_basichealthinformation_df_20220217
+        set id_card_no = #{idCardNo}
+        where people_id = #{peopleId}
+  </update>
+
+    <update id="updatePhoneNumber" parameterType="com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo">
+        update health_record_basichealthinformation_df_20220217
+         set phone_number = #{phoneNumber}
+        where people_id = #{peopleId}
+    </update>
+
+    <update id="updateExtraFields" parameterType="com.edu.nbu.cn.mybatis.model.ehr.HealthInfo">
+        update health_record_basichealthinformation_df_20220217
+        set
+
+
+
+        diet_taste_list = #{dietTasteList}
+            <!--    abo_blood_type_name = #{aboBloodTypeName},
+             rh_blood_type_name = #{rhBloodTypeName},
+             martial_status_name = #{martialStatusName},
+             fertility_status_name = #{fertilityStatusName},
+             family_diseases = #{familyDiseases}
+        -->
+
+        where people_id = #{peopleId}
+    </update>
+
+    <update id="updateExtraFields4" parameterType="com.edu.nbu.cn.mybatis.model.ehr.HealthInfo">
+        update health_record_basichealthinformation_df_20220217
+        set
+            respiratory_rate = #{respiratoryRate}
+        where people_id = #{peopleId}
+    </update>
+
+    <update id="updateExtraFields2" parameterType="com.edu.nbu.cn.mybatis.model.ehr.HealthInfo2">
+        update health_record_basichealthinformation_df_20220217
+        set
+        address =#{address}
+            <!--
+            sport_frequency_name = #{sportFrequencyName}
+            sleeping_situation_name = #{sleepingSituationName}
+            past_diseases = #{pastDiseases}
+            smoking_status_name = #{smokingStatusName}
+            drinking_status_name = #{drinking_status_name}
+            sleeping_hours_code = #{sleeping_hours_code}
+            -->
+        where people_id = #{peopleId}
+    </update>
+
+    <select id="search" resultMap="BaseResultMap">
+        select id,people_id,phone_number,id_card_no,name from health_record_basichealthinformation_df_20220217  order by id limit 1,5000
+    </select>
+
+    <select id="searchHealthInfo" resultMap="healthExtraMap">
+        select id,people_id,phone_number,id_card_no,name,abo_blood_type_id,abo_blood_type_name,rh_blood_type_name,rh_blood_type_id,
+               martial_status_id,martial_status_name,fertility_status_id,fertility_status_name,family_history_is_normal,family_diseases,
+               diet_taste_list,diet_taste_is_normal,respiratory_rate,sport_frequency_name,sport_frequency_id,sleeping_situation_id,sleeping_situation_name,
+               past_diseases,past_illness_is_normal,smoking_status_id,smoking_status_name,drinking_status_id,drinking_status_name,sleeping_hours_code,sleeping_hours_id,
+               province_id,province_name,city_id,city_name,county_id,county_name,township_id,township_name,village_id,village_name,address
+
+               from health_record_basichealthinformation_df_20220217  order by id limit 1,5000
+    </select>
+
+    <update id="updateBloodFat" parameterType="com.edu.nbu.cn.mybatis.model.ehr.BloodFatInfo">
+        update health_record_bloodfat_df
+        <set>
+            <if test="id != null">id = #{id}</if>
+            <if test="biz_id != null">biz_id = #{bizId}</if>
+        </set>
+        where people_id = #{peopleId}
+    </update>
+
+
+    <select id="listFat" resultMap="bloodFatMap">
+        select id,biz_id,people_id,name from health_record_bloodfat_df
+        <where>
+            <if test="peopleId != null">
+                people_id = #{peopleId}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateHealthIndicatorInfo" parameterType="com.edu.nbu.cn.mybatis.model.ehr.HealthIndicatorInfo">
+        update health_record_healthindicator_df
+        <set>
+            <if test="id != null">id = #{id}</if>
+            <if test="biz_id != null">biz_id = #{bizId}</if>
+        </set>
+        where people_id = #{peopleId}
+    </update>
+
+
+    <select id="list" resultMap="indicatorMap">
+        select id,biz_id,people_id,name from health_record_healthindicator_df where biz_id in
+        <foreach item="item" index="index" collection="bizIds"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

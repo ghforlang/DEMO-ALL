@@ -20,7 +20,7 @@ public class MybatisConfiguration {
 
         PooledDataSource dataSource = new PooledDataSource();
         dataSource.setDriver("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/employees?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&serverTimezone=GMT%2B8");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/TTT?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&serverTimezone=GMT%2B8");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
         dataSource.setPoolPingQuery("SELECT 1");
@@ -35,8 +35,8 @@ public class MybatisConfiguration {
         configuration.setEnvironment(environment);
         configuration.addMappers("com.edu.nbu.cn.mybatis.mapper");
 //        configuration.addLoadedResource("classpath*:/mapper/EmployeesMapper.xml");
-        configuration.addInterceptor(new ForbidWriteInterceptor());
-        XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(this.getClass().getResourceAsStream("/mapper/EmployeesMapper.xml"), configuration, "mapper/EmployeesMapper.xml", configuration.getSqlFragments());
+//        configuration.addInterceptor(new ForbidWriteInterceptor());
+        XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(this.getClass().getResourceAsStream("/mapper/BasicHealthInfoMapper.xml"), configuration, "mapper/BasicHealthInfoMapper.xml", configuration.getSqlFragments());
         xmlMapperBuilder.parse();
         return configuration;
     }
