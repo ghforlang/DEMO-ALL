@@ -1,5 +1,6 @@
 package com.edu.nbu.cn.mybatis.mapper;
 
+import com.edu.nbu.cn.mybatis.model.HealthIndicator;
 import com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo;
 import com.edu.nbu.cn.mybatis.model.ehr.BloodFatInfo;
 import com.edu.nbu.cn.mybatis.model.ehr.HealthIndicatorInfo;
@@ -40,4 +41,9 @@ public interface BasicHealthInfoMapper {
     void updateHealthIndicatorInfo(HealthIndicatorInfo indicatorInfo);
 
     List<HealthIndicatorInfo> list(@Param("bizIds")List<String> bizIds);
+
+
+    List<HealthIndicator> searchBizLabelsAll();
+
+    void updateBizLabelsData(HealthIndicator healthIndicator);
 }

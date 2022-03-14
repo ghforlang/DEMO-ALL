@@ -7,7 +7,7 @@ import com.edu.nbu.cn.mybatis.application.Application;
 import com.edu.nbu.cn.mybatis.mapper.BasicHealthInfoMapper;
 import com.edu.nbu.cn.mybatis.mapper.EmployeesMapper;
 import com.edu.nbu.cn.mybatis.model.Employees;
-import com.edu.nbu.cn.mybatis.model.ehr.Address;
+import com.edu.nbu.cn.mybatis.model.HealthIndicator;
 import com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo;
 import com.edu.nbu.cn.mybatis.model.ehr.BloodFatInfo;
 import com.edu.nbu.cn.mybatis.model.ehr.CodedValue;
@@ -22,6 +22,7 @@ import com.edu.nbu.cn.mybatis.utils.ExcelListener;
 import com.edu.nbu.cn.mybatis.utils.ExcelUtils;
 import com.edu.nbu.cn.mybatis.utils.SnowflakesIdGenerator;
 import com.edu.nbu.cn.mybatis.utils.StreamUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -41,9 +42,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -53,10 +56,12 @@ public class TestMapper {
 
     @Resource
     private SqlSessionFactory sqlSessionFactory;
+    // 数仓提供的指标源表表名
+    private static String tableName = "health_record_healthindicator_df";
 
     private static final String excelPath = "/Users/fanwenhao/my-projects/DEMO-ALL/demo-mybatis-ext/src/main/resources/解密表的副本.xlsx";
     private static final String jsonPath = "/Users/fanwenhao/my-projects/DEMO-ALL/demo-mybatis-ext/src/main/resources/en_decrypt_json.json";
-    private static final SnowflakesIdGenerator idGenerator = new SnowflakesIdGenerator(System.currentTimeMillis(),954);
+    private static final SnowflakesIdGenerator idGenerator = new SnowflakesIdGenerator(System.currentTimeMillis(),1023);
 
 //    @Test
     public void updateId(){
@@ -178,14 +183,14 @@ public class TestMapper {
 //                CodedValue codedValue = new CodedValue(healthInfo.getAboBloodTypeId(),healthInfo.getAboBloodTypeName());
 //                healthInfo.setAboBloodTypeName(JSON.toJSONString(codedValue));
 //                System.out.println(healthInfo.getAboBloodTypeName());
-//
+//                mapper.updateExtraFields(healthInfo);
 //            }
              // rh_blood_type 字段处理 需要的时候放开
 //            if(StringUtils.isNotBlank(healthInfo.getRhBloodTypeId()) && StringUtils.isNotBlank(healthInfo.getRhBloodTypeName())){
 //                CodedValue codedValue = new CodedValue(healthInfo.getRhBloodTypeId(),healthInfo.getRhBloodTypeName());
 //               healthInfo.setRhBloodTypeName(JSON.toJSONString(codedValue));
 //                System.out.println(healthInfo.getRhBloodTypeName());
-//
+//                mapper.updateExtraFields(healthInfo);
 //            }
 
             // martial_status 字段处理,需要的时候放开
@@ -193,8 +198,7 @@ public class TestMapper {
 //                CodedValue codedValue = new CodedValue(healthInfo.getMartialStatusId(),healthInfo.getMartialStatusName());
 //               healthInfo.setMartialStatusName(JSON.toJSONString(codedValue));
 //                System.out.println(healthInfo.getMartialStatusName());
-//
-//
+//               mapper.updateExtraFields(healthInfo);
 //            }
 
             //fertility_status_name 字段处理,需要的时候放开
@@ -215,6 +219,7 @@ public class TestMapper {
 //                familyHistory.setFamilyHistoryItems(items);
 //               healthInfo.setFamilyDiseases(JSON.toJSONString(familyHistory));
 //                System.out.println(healthInfo.getFamilyDiseases());
+//            mapper.updateExtraFields(healthInfo);
 //            }
 
             //饮食口味
@@ -322,33 +327,33 @@ public class TestMapper {
 //            }
 
 //            // 地址处理
-            Address address = new Address();
-            if(StringUtils.isNotBlank(healthInfo.getProvince_id()) && StringUtils.isNotBlank(healthInfo.getProvince_name())){
-                CodedValue province = new CodedValue(healthInfo.getProvince_id(),healthInfo.getProvince_name());
-                address.setProvince(province);
-            }
-            if(StringUtils.isNotBlank(healthInfo.getCity_id()) && StringUtils.isNotBlank(healthInfo.getCity_name())){
-                CodedValue province = new CodedValue(healthInfo.getCity_id(),healthInfo.getCity_name());
-                address.setCity(province);
-            }
-            if(StringUtils.isNotBlank(healthInfo.getCounty_id()) && StringUtils.isNotBlank(healthInfo.getCounty_name())){
-                CodedValue province = new CodedValue(healthInfo.getCounty_id(),healthInfo.getCounty_name());
-                address.setCounty(province);
-            }
-            if(StringUtils.isNotBlank(healthInfo.getTownship_id()) && StringUtils.isNotBlank(healthInfo.getTownship_name())){
-                CodedValue province = new CodedValue(healthInfo.getTownship_id(),healthInfo.getTownship_name());
-                address.setTownship(province);
-            }
-            if(StringUtils.isNotBlank(healthInfo.getVillage_id()) && StringUtils.isNotBlank(healthInfo.getVillage_name())){
-                CodedValue province = new CodedValue(healthInfo.getVillage_id(),healthInfo.getVillage_name());
-                address.setVillage(province);
-            }
-            if (StringUtils.isNotBlank(healthInfo.getAddress())){
-                address.setAddress(healthInfo.getAddress());
-            }
-//            System.out.println(JSON.toJSONString(address));
-            healthInfo.setAddress(JSON.toJSONString(address));
-            mapper.updateExtraFields2(healthInfo);
+//            Address address = new Address();
+//            if(StringUtils.isNotBlank(healthInfo.getProvince_id()) && StringUtils.isNotBlank(healthInfo.getProvince_name())){
+//                CodedValue province = new CodedValue(healthInfo.getProvince_id(),healthInfo.getProvince_name());
+//                address.setProvince(province);
+//            }
+//            if(StringUtils.isNotBlank(healthInfo.getCity_id()) && StringUtils.isNotBlank(healthInfo.getCity_name())){
+//                CodedValue province = new CodedValue(healthInfo.getCity_id(),healthInfo.getCity_name());
+//                address.setCity(province);
+//            }
+//            if(StringUtils.isNotBlank(healthInfo.getCounty_id()) && StringUtils.isNotBlank(healthInfo.getCounty_name())){
+//                CodedValue province = new CodedValue(healthInfo.getCounty_id(),healthInfo.getCounty_name());
+//                address.setCounty(province);
+//            }
+//            if(StringUtils.isNotBlank(healthInfo.getTownship_id()) && StringUtils.isNotBlank(healthInfo.getTownship_name())){
+//                CodedValue province = new CodedValue(healthInfo.getTownship_id(),healthInfo.getTownship_name());
+//                address.setTownship(province);
+//            }
+//            if(StringUtils.isNotBlank(healthInfo.getVillage_id()) && StringUtils.isNotBlank(healthInfo.getVillage_name())){
+//                CodedValue province = new CodedValue(healthInfo.getVillage_id(),healthInfo.getVillage_name());
+//                address.setVillage(province);
+//            }
+//            if (StringUtils.isNotBlank(healthInfo.getAddress())){
+//                address.setAddress(healthInfo.getAddress());
+//            }
+////            System.out.println(JSON.toJSONString(address));
+//            healthInfo.setAddress(JSON.toJSONString(address));
+//            mapper.updateExtraFields2(healthInfo);
         });
     }
 
@@ -366,18 +371,29 @@ public class TestMapper {
     }
 
     @Test
-    public void testHealthIndicator(){
-//        SqlSession sqlSession = sqlSessionFactory.openSession(true);
-//        BasicHealthInfoMapper mapper = sqlSession.getMapper(BasicHealthInfoMapper.class);
-//        List<HealthIndicatorInfo> indicatorInfoList = mapper.list(Arrays.asList("507970214714028038"));
-//        System.out.println(indicatorInfoList);
-        HashMap<Integer,String> map = new HashMap<>(16);
-        map.put(1,"111");
-        map.put(6,"21");
-        int hashCode = -1231231414;
-        hashCode = hashCode < 0 ? (~hashCode) + 1 : hashCode;
-        System.out.println(hashCode % 16);
-        System.out.println(map.get(hashCode % 16));
+    public void testGenerateBizLabelsDataSql(){
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        BasicHealthInfoMapper mapper = sqlSession.getMapper(BasicHealthInfoMapper.class);
+        List<HealthIndicator> indicatorInfoList = mapper.searchBizLabelsAll();
+
+        Set<String> bizLabelsSet = new HashSet<>();
+        indicatorInfoList.forEach(indicatorInfo ->{
+            if(StringUtils.isNotBlank(indicatorInfo.getBizLabels())  && indicatorInfo.getBizLabels().length() > 2 ){
+                bizLabelsSet.add(indicatorInfo.getBizLabels());
+            }else{
+                indicatorInfo.setBizLabelsData(0L);
+            }
+        });
+
+        Map<String,Long> bizLabelsMap = new HashMap<>();
+        for (String s : bizLabelsSet) {
+            bizLabelsMap.put(s,BizLabelTransfer.bitTransfer(Arrays.asList(StringUtils.split(s.substring(1,s.length() -1),","))));
+        }
+
+        //执行console生成的sql
+        bizLabelsMap.forEach((k,v) ->{
+            System.out.println("update " +  tableName + " set biz_labels_data = " + v + " where biz_labels = '" + k + "';" );
+        });
     }
 
 

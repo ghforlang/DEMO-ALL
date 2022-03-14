@@ -53,7 +53,6 @@
         <result column="village_id" property="village_id"/>
         <result column="village_name" property="village_name"/>
         <result column="address" property="address"/>
-
     </resultMap>
 
     <resultMap id="bloodFatMap" type="com.edu.nbu.cn.mybatis.model.ehr.BloodFatInfo" >
@@ -72,65 +71,74 @@
         <result column="name" property="name" jdbcType="VARCHAR" />
     </resultMap>
 
+    <resultMap id="bizLabelsMap" type="com.edu.nbu.cn.mybatis.model.HealthIndicator" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="people_id" property="peopleId" jdbcType="VARCHAR" />
+        <result column="biz_labels" property="bizLabels" jdbcType="VARCHAR" />
+        <result column="id_card_no" property="idCardNo" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="biz_labels_data" property="bizLabelsData"/>
+    </resultMap>
+
     <update id="updateId" parameterType="com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo">
-        update health_record_basichealthinformation_df_20220217
+        update health_record_basichealthinformation_df_enc2
         set id = #{id}
         where people_id = #{peopleId}
     </update>
 
     <update id="updateIdCardNo" parameterType="com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo">
-    update health_record_basichealthinformation_df_20220217
+    update health_record_basichealthinformation_df_enc2
         set id_card_no = #{idCardNo}
         where people_id = #{peopleId}
   </update>
 
     <update id="updatePhoneNumber" parameterType="com.edu.nbu.cn.mybatis.model.ehr.BasicHealthInfo">
-        update health_record_basichealthinformation_df_20220217
+        update health_record_basichealthinformation_df_enc2
          set phone_number = #{phoneNumber}
         where people_id = #{peopleId}
     </update>
 
     <update id="updateExtraFields" parameterType="com.edu.nbu.cn.mybatis.model.ehr.HealthInfo">
-        update health_record_basichealthinformation_df_20220217
+        update health_record_basichealthinformation_df_enc2
         set
-
-
-
-        diet_taste_list = #{dietTasteList}
-            <!--    abo_blood_type_name = #{aboBloodTypeName},
-             rh_blood_type_name = #{rhBloodTypeName},
+            diet_taste_list = #{dietTasteList}
+            <!--  abo_blood_type_name = #{aboBloodTypeName} ,
+             rh_blood_type_name = #{rhBloodTypeName} ,
              martial_status_name = #{martialStatusName},
              fertility_status_name = #{fertilityStatusName},
-             family_diseases = #{familyDiseases}
+             family_diseases = #{familyDiseases},
+
         -->
 
         where people_id = #{peopleId}
     </update>
 
     <update id="updateExtraFields4" parameterType="com.edu.nbu.cn.mybatis.model.ehr.HealthInfo">
-        update health_record_basichealthinformation_df_20220217
+        update health_record_basichealthinformation_df_enc2
         set
             respiratory_rate = #{respiratoryRate}
         where people_id = #{peopleId}
     </update>
 
     <update id="updateExtraFields2" parameterType="com.edu.nbu.cn.mybatis.model.ehr.HealthInfo2">
-        update health_record_basichealthinformation_df_20220217
+        update health_record_basichealthinformation_df_enc2
         set
-        address =#{address}
+            sleeping_hours_code = #{sleeping_hours_code}
+
             <!--
             sport_frequency_name = #{sportFrequencyName}
             sleeping_situation_name = #{sleepingSituationName}
             past_diseases = #{pastDiseases}
             smoking_status_name = #{smokingStatusName}
             drinking_status_name = #{drinking_status_name}
-            sleeping_hours_code = #{sleeping_hours_code}
+
+            address =#{address}
             -->
         where people_id = #{peopleId}
     </update>
 
     <select id="search" resultMap="BaseResultMap">
-        select id,people_id,phone_number,id_card_no,name from health_record_basichealthinformation_df_20220217  order by id limit 1,5000
+        select id,people_id,phone_number,id_card_no,name from health_record_basichealthinformation_df_enc2  order by id limit 5000 OFFSET 0
     </select>
 
     <select id="searchHealthInfo" resultMap="healthExtraMap">
@@ -140,7 +148,7 @@
                past_diseases,past_illness_is_normal,smoking_status_id,smoking_status_name,drinking_status_id,drinking_status_name,sleeping_hours_code,sleeping_hours_id,
                province_id,province_name,city_id,city_name,county_id,county_name,township_id,township_name,village_id,village_name,address
 
-               from health_record_basichealthinformation_df_20220217  order by id limit 1,5000
+               from health_record_basichealthinformation_df_enc2  order by id limit 5000 OFFSET 0
     </select>
 
     <update id="updateBloodFat" parameterType="com.edu.nbu.cn.mybatis.model.ehr.BloodFatInfo">
@@ -179,4 +187,15 @@
             #{item}
         </foreach>
     </select>
+
+    <select id="searchBizLabelsAll" resultMap="bizLabelsMap">
+        select id,people_id,biz_labels,id_card_no,name,biz_labels_data
+        from health_record_healthindicator_df
+    </select>
+
+
+    <update id="updateBizLabelsData" parameterType="com.edu.nbu.cn.mybatis.model.HealthIndicator">
+        update health_record_healthindicator_df set biz_labels_data = #{bizLabelsData}
+        WHERE biz_labels = #{bizLabels}
+    </update>
 </mapper>

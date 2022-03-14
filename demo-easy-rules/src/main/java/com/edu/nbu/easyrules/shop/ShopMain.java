@@ -19,24 +19,25 @@ import java.io.FileReader;
  * @since 1.0
  */
 public class ShopMain {
-    private static final String yamlFilePath = "/Users/fanwenhao/my-projects/DEMO-ALL/demo-easy-rules/target/classes/alcohol-rule.yml";
+    private static final String yamlFilePath = "demo-easy-rules/src/main/java/com/edu/nbu/easyrules/shop/alcohol-rule.yml";
 
     public static void main(String[] args) throws Exception {
         Person tom = new Person("tom",12);
         Facts facts = new Facts();
         facts.put("person",tom);
 
-        Rule ageRule = new MVELRule()
-                .name("ageRule")
-                .description("check if person's age is > 18 and marks the person as adult!")
+        MVELRule ageRule = new MVELRule()
+                .name("age rule")
+                .description("Check if person's age is > 18 and mark the person as adult")
                 .priority(1)
                 .when("person.age > 18")
-                .then("person.setAdult(true)");
+                .then("person.setAdult(true);");
 
 
-        YamlRuleDefinitionReader yamlRuleDefinitionReader = new YamlRuleDefinitionReader(new Yaml());
-        MVELRuleFactory mvelRuleFactory = new MVELRuleFactory(yamlRuleDefinitionReader);
+        MVELRuleFactory mvelRuleFactory = new MVELRuleFactory(new YamlRuleDefinitionReader());
         Rule alcoholRule = mvelRuleFactory.createRule(new FileReader(yamlFilePath));
+
+
         Rules rules = new Rules();
         rules.register(ageRule);
         rules.register(alcoholRule);

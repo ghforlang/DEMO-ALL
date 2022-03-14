@@ -1,6 +1,0 @@
-name: "alcohol rule"
-description: "check if person's age is > 18 and marks the person as adult!"
-priority: 2
-condition: "person.isAdult() == false"
-actions:
-  - "System.out.println(\"Shop: Sorry, you are not allowed to buy alcohol\");"
