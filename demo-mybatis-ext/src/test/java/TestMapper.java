@@ -63,7 +63,7 @@ public class TestMapper {
     private static final String jsonPath = "/Users/fanwenhao/my-projects/DEMO-ALL/demo-mybatis-ext/src/main/resources/en_decrypt_json.json";
     private static final SnowflakesIdGenerator idGenerator = new SnowflakesIdGenerator(System.currentTimeMillis(),1023);
 
-//    @Test
+   @Test
     public void updateId(){
         //健康信息查询（）
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -179,12 +179,12 @@ public class TestMapper {
 //        System.out.println(healthInfoList);
         healthInfoList.forEach(healthInfo ->{
             // abo_blood_type 字段处理 需要的时候放开
-//            if(StringUtils.isNotBlank(healthInfo.getAboBloodTypeId()) && StringUtils.isNotBlank(healthInfo.getAboBloodTypeName())){
-//                CodedValue codedValue = new CodedValue(healthInfo.getAboBloodTypeId(),healthInfo.getAboBloodTypeName());
-//                healthInfo.setAboBloodTypeName(JSON.toJSONString(codedValue));
-//                System.out.println(healthInfo.getAboBloodTypeName());
-//                mapper.updateExtraFields(healthInfo);
-//            }
+            if(StringUtils.isNotBlank(healthInfo.getAboBloodTypeId()) && StringUtils.isNotBlank(healthInfo.getAboBloodTypeName())){
+                CodedValue codedValue = new CodedValue(healthInfo.getAboBloodTypeId(),healthInfo.getAboBloodTypeName());
+                healthInfo.setAboBloodTypeName(JSON.toJSONString(codedValue));
+                System.out.println(healthInfo.getAboBloodTypeName());
+                mapper.updateExtraFields(healthInfo);
+            }
              // rh_blood_type 字段处理 需要的时候放开
 //            if(StringUtils.isNotBlank(healthInfo.getRhBloodTypeId()) && StringUtils.isNotBlank(healthInfo.getRhBloodTypeName())){
 //                CodedValue codedValue = new CodedValue(healthInfo.getRhBloodTypeId(),healthInfo.getRhBloodTypeName());

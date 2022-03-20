@@ -33,6 +33,8 @@
         <module>demo-jeasy</module>
         <module>demo-easy-rules</module>
         <module>demo-spel</module>
+        <module>demo-descriptor</module>
+        <module>demo-datatransfer</module>
     </modules>
 
     <properties>

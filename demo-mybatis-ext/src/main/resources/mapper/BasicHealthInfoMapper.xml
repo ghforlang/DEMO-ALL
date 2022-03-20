@@ -101,13 +101,14 @@
     <update id="updateExtraFields" parameterType="com.edu.nbu.cn.mybatis.model.ehr.HealthInfo">
         update health_record_basichealthinformation_df_enc2
         set
-            diet_taste_list = #{dietTasteList}
-            <!--  abo_blood_type_name = #{aboBloodTypeName} ,
+        abo_blood_type_name = #{aboBloodTypeName}
+            <!--   ,
              rh_blood_type_name = #{rhBloodTypeName} ,
              martial_status_name = #{martialStatusName},
              fertility_status_name = #{fertilityStatusName},
              family_diseases = #{familyDiseases},
 
+            diet_taste_list = #{dietTasteList}
         -->
 
         where people_id = #{peopleId}
