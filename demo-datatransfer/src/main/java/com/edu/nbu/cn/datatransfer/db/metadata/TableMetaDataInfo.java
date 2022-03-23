@@ -3,6 +3,7 @@ package com.edu.nbu.cn.datatransfer.db.metadata;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ import java.util.List;
 @Getter
 @Setter
 public class TableMetaDataInfo {
+    private LocalDateTime createTime;
     private String tableName;
     private List<ColumnMetaDataInfo> columnMetaDatas;
+    private String comments;
 }

@@ -14,5 +14,5 @@ public interface Generator<S,T> {
      * @param <T>
      * @return
      */
-    <T> T generator(S s);
+     T generator(S s);
 }

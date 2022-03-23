@@ -115,5 +115,10 @@
             <version>2.4.10.Final</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.squareup</groupId>
+            <artifactId>javapoet</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -1,21 +1,30 @@
 package com.edu.nbu.cn.datatransfer.db;
 
+import com.alibaba.excel.util.CollectionUtils;
 import com.edu.nbu.cn.datatransfer.db.metadata.ColumnMetaDataInfo;
 import com.edu.nbu.cn.datatransfer.db.metadata.TableMetaDataInfo;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.sql.DatabaseMetaData;
+import java.sql.JDBCType;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author laoshi . hua
@@ -30,60 +39,107 @@ public class DBTableHandler {
     private DataSource dataSource;
 
     private static final String DB_SCHEMA = "TTT";
-    private static final String TABLE_NAME = "TABLE_NAME";
-    private static final String COLUMN_QURY_SQL = "SELECT TABLE_NAME,COLUMN_NAME,COLUMN_DEFAULT,IS_NULLABLE,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,COLUMN_TYPE,COLUMN_COMMENT FROM COLUMNS WHERE TABLE_NAME = ";
+    private static final String TABLE_SCHEMA_QUERY_SQL = "SELECT TABLE_NAME,CREATE_TIME,TABLE_ROWS,TABLE_COMMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = ";
+    private static final String COLUMN_SCHEMA_QUERY_SQL = "SELECT TABLE_NAME,COLUMN_NAME,COLUMN_DEFAULT,IS_NULLABLE,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,COLUMN_TYPE,COLUMN_COMMENT FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '%s' AND TABLE_NAME = '%s'";
+    private static final String COLUMN_QUERY_SQL = "SELECT * FROM %s WHERE id = (SELECT MAX(id) from %s);";
+
+
+    private static final Set<String> tableNameCache = new HashSet<>();
+    private static final Map<String,TableMetaDataInfo> tableMetaInfoCache = new HashMap<>();
 
     public Set<String> allTableNames(){
-        Set<String> tableNames = new HashSet<>();
+        return allTableNames(false);
+    }
+
+
+    public Set<String> allTableNames(boolean refresh){
+        if((!CollectionUtils.isEmpty(tableNameCache)) && (!refresh)){
+            return tableNameCache;
+        }
+
+        Map<String,TableMetaDataInfo> metaDataInfoInitMap = initMetaDataInfoMap();
+        if(CollectionUtils.isEmpty(tableNameCache) && !CollectionUtils.isEmpty(metaDataInfoInitMap)){
+            tableNameCache.addAll(metaDataInfoInitMap.keySet());
+        }
+        return metaDataInfoInitMap.keySet();
+    }
+
+    public Map<String,TableMetaDataInfo> initMetaDataInfoMap(){
+        Map<String,TableMetaDataInfo> tableMetaDataInfoMap = new HashMap<>();
         Statement statement = null;
         try {
             statement = dataSource.getConnection().createStatement();
-            ResultSet tables = statement.executeQuery("SELECT TABLE_NAME FROM `COLUMNS` WHERE TABLE_SCHEMA = " + "'" + DB_SCHEMA + "'") ;
+            // 查询infomation_schema.Tables 获取table metainfo
+            ResultSet tables = statement.executeQuery(TABLE_SCHEMA_QUERY_SQL + "'" + DB_SCHEMA + "'") ;
             while(tables.next()){
-                tableNames.add(tables.getString(1));
+                TableMetaDataInfo tableMetaDataInfo = new TableMetaDataInfo();
+                tableMetaDataInfo.setTableName(tables.getString(1));
+//                tableMetaDataInfo.setCreateTime(LocalDateTime.parse(tables.getString(2)));
+                tableMetaDataInfo.setComments(tables.getString(4));
+                tableMetaDataInfoMap.put(tables.getString(1),tableMetaDataInfo);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return tableNames;
+        return tableMetaDataInfoMap;
+    }
+
+    public Map<String,TableMetaDataInfo> tableMetaDataInfoMap(){
+        return buildTableMetaDataMap(false);
+    }
+
+    public Map<String,TableMetaDataInfo> buildTableMetaDataMap(boolean refresh){
+        if((!CollectionUtils.isEmpty(tableMetaInfoCache)) && !refresh){
+            return tableMetaInfoCache;
+        }
+
+        Map<String,TableMetaDataInfo> tableMetaDataInfoMap = initMetaDataInfoMap();
+        tableMetaDataInfoMap.forEach((tableName,tableMetaInfo) ->{
+            fillTableColumnInfos(tableMetaInfo);
+        });
+
+        if(CollectionUtils.isEmpty(tableMetaInfoCache) && !CollectionUtils.isEmpty(tableMetaDataInfoMap)){
+            tableMetaInfoCache.putAll(tableMetaDataInfoMap);
+        }
+        return  ImmutableMap.copyOf(tableMetaDataInfoMap);
     }
 
     public List<TableMetaDataInfo> listTables(){
-        List<TableMetaDataInfo> tableMetaDataInfos = new ArrayList<>();
-        Set<String> tableNames = allTableNames();
-        for (String tableName : tableNames){
-            tableMetaDataInfos.add(buildTableMetaDataInfo(tableName));
-        }
-        return tableMetaDataInfos;
+        return new ArrayList<>(buildTableMetaDataMap(true).values());
     }
 
-    private TableMetaDataInfo buildTableMetaDataInfo(String tableName){
-        TableMetaDataInfo tableMetaDataInfo = new TableMetaDataInfo();
-        tableMetaDataInfo.setTableName(tableName);
-        Statement descStatement = null;
+
+    private void fillTableColumnInfos(TableMetaDataInfo tableMetaDataInfo){
+        // 查询infomation_schema.COLUMNS 获取COLUMNS metainfo
+        Statement statement = null;
+        ResultSet resultSet = null;
         try {
-            descStatement = dataSource.getConnection().createStatement();
-            ResultSet resultSet = descStatement.executeQuery(COLUMN_QURY_SQL + "'" + tableName + "'");
+            statement = dataSource.getConnection().createStatement();
+            resultSet = statement.executeQuery(String.format(COLUMN_SCHEMA_QUERY_SQL,DB_SCHEMA,tableMetaDataInfo.getTableName()));
             List<ColumnMetaDataInfo> columnMetaDataInfos = new ArrayList<>();
-            int orderValue = 1;
             while(resultSet.next()){
                 ColumnMetaDataInfo columnMetaDataInfo = new ColumnMetaDataInfo();
                 columnMetaDataInfo.setTableName(resultSet.getString(1));
                 columnMetaDataInfo.setColumnName(resultSet.getString(2));
                 columnMetaDataInfo.setColumnDefault(resultSet.getString(3));
-                columnMetaDataInfo.setNullable(StringUtils.isBlank(resultSet.getString(4)) ? true : ("YES".equalsIgnoreCase(resultSet.getString(4)) ? true : false));
-                columnMetaDataInfo.setColumnJdbcType(resultSet.getString(5));
-//                columnMetaDataInfo.setColumnType(Class.forName(convertType(resultSet.getString(2))));
                 columnMetaDataInfo.setComments(resultSet.getString(8));
-
-                columnMetaDataInfo.setOrder(orderValue++);
                 columnMetaDataInfos.add(columnMetaDataInfo);
+            }
+
+            // 填充其他信息
+            ResultSet resultColumnSet = statement.executeQuery(String.format(COLUMN_QUERY_SQL,tableMetaDataInfo.getTableName(),tableMetaDataInfo.getTableName()));
+            ResultSetMetaData resultSetMetaData = resultColumnSet.getMetaData();
+            Map<String,ColumnMetaDataInfo> tempMap = columnMetaDataInfos.stream().collect(Collectors.toMap( metaDataInfo -> metaDataInfo.getColumnName(),metaDataInfo -> metaDataInfo,(k1,k2) -> k1));
+            for (int i = 1; i <= resultSetMetaData.getColumnCount() ; i++) {
+                ColumnMetaDataInfo columnMetaDataInfo = tempMap.get(resultSetMetaData.getColumnName(i));
+                columnMetaDataInfo.setNullable(dealWithNullable(resultSetMetaData.isNullable(i)));
+                columnMetaDataInfo.setOrder(i);
+                columnMetaDataInfo.setColumnJdbcType(JDBCType.valueOf(resultSetMetaData.getColumnType(i)));
             }
             tableMetaDataInfo.setColumnMetaDatas(columnMetaDataInfos);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return tableMetaDataInfo;
     }
 
    private  String convertType(String sqlType) {
@@ -111,4 +167,16 @@ public class DBTableHandler {
         return null;
     }
 
+//    private JDBCType dealWithJDBCType(String type){
+//
+//    }
+
+    private boolean dealWithNullable(int nullableValue){
+       switch (nullableValue){
+           case 0: return false;
+           case 1: return true;
+           case 2: return true;
+           default: return true;
+       }
+    }
 }

@@ -2,9 +2,9 @@ package com.edu.nbu.cn.datatransfer.db.metadata;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.poi.ss.formula.functions.Column;
 
 import java.lang.reflect.Type;
+import java.sql.JDBCType;
 
 /**
  * @author laoshi . hua
@@ -18,7 +18,7 @@ public class ColumnMetaDataInfo implements Comparable<ColumnMetaDataInfo> {
     private String columnName;
     private String columnDefault;
     private boolean nullable;
-    private String columnJdbcType;
+    private JDBCType columnJdbcType;
     private String comments;
     private Integer order;
     private Type columnType;

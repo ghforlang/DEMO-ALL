@@ -26,13 +26,15 @@ public class TestJavaPoet {
     @SneakyThrows
     public static void main(String[] args) {
         TypeSpec typeSpec = generateClass(Activity.class);
-        JavaFile file = JavaFile.builder("com.edu.nbu.cn.demo.javapoet.model",typeSpec).build();
-        File clazzFile = new File("/Users/charen/my-project/DEMO-ALL/src/main/java/com/edu/nbu/cn/demo/javapoet/model");
+        JavaFile file = JavaFile.builder("javapoet.model",typeSpec).build();
+        String filePath = TestJavaPoet.class.getResource("/").getPath();
+        System.out.println(filePath);
+        File clazzFile = new File(filePath);
         file.writeTo(clazzFile);
 
         TypeSpec typeSpec1 = generateAbstractClass(Activity.class);
-        JavaFile file1 = JavaFile.builder("com.edu.nbu.cn.demo.javapoet.model",typeSpec1).build();
-        File abstractClazzFile = new File("/Users/charen/my-project/DEMO-ALL/src/main/java/com/edu/nbu/cn/demo/javapoet/model");
+        JavaFile file1 = JavaFile.builder("model",typeSpec1).build();
+        File abstractClazzFile = new File(filePath);
         file1.writeTo(abstractClazzFile);
     }
 

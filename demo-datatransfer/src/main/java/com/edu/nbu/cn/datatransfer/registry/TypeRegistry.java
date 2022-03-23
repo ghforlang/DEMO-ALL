@@ -4,7 +4,6 @@ import com.edu.nbu.cn.datatransfer.model.type.FieldTypeWrapper;
 import com.edu.nbu.cn.datatransfer.model.type.JDBCTypeWrapper;
 import com.edu.nbu.cn.datatransfer.model.type.TypeWrapper;
 
-import java.lang.reflect.Field;
 import java.math.BigInteger;
 import java.sql.JDBCType;
 import java.time.LocalDateTime;
@@ -86,5 +85,10 @@ public class TypeRegistry {
         jdbcType2FieldTypeMap.put(BOOLEAN,fieldTypeRegistryMap.get(Boolean.class) );
         jdbcType2FieldTypeMap.put(TIME_WITH_TIMEZONE, fieldTypeRegistryMap.get(LocalDateTime.class));
         jdbcType2FieldTypeMap.put(TIMESTAMP_WITH_TIMEZONE, fieldTypeRegistryMap.get(LocalDateTime.class));
+    }
+
+
+    public static FieldTypeWrapper getFieldTypeWrapper( JDBCType jdbcType){
+        return jdbcType2FieldTypeMap.get(jdbcType);
     }
 }

@@ -6,6 +6,7 @@ import com.edu.nbu.cn.datatransfer.db.DBTableHandler;
 import com.edu.nbu.cn.datatransfer.db.TestConnection;
 import com.edu.nbu.cn.datatransfer.db.metadata.ColumnMetaDataInfo;
 import com.edu.nbu.cn.datatransfer.db.metadata.TableMetaDataInfo;
+import com.edu.nbu.cn.datatransfer.generator.JavaCodeGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class TestDataTransferApplication {
 
     @Autowired
     private DBTableHandler tableHandler;
+    @Autowired
+    private JavaCodeGenerator javaCodeGenerator;
 
     @Test
     public void testAllTableNames() throws SQLException {
@@ -38,7 +41,7 @@ public class TestDataTransferApplication {
     }
 
     @Test
-    public void testAllColumnNames(){
-
+    public void testGenerateCode(){
+        javaCodeGenerator.generator("success!");
     }
 }
