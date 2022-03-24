@@ -1,5 +1,6 @@
 package javapoet;
 
+import com.squareup.javapoet.AnnotationSpec;
 import javapoet.annotation.JavaPoet;
 import javapoet.model.A;
 import javapoet.model.Activity;
@@ -92,8 +93,10 @@ public class TestJavaPoet {
             methodSpecList.add(generateAbstractMethod(method.getName(),Activity.class));
         }
 
+        AnnotationSpec annoSpec = AnnotationSpec.builder(JavaPoet.class)
+                .addMember("type","$T.$L",TypeEnum.class,TypeEnum.ONE).build();
         TypeSpec demoActivity = TypeSpec.classBuilder("AbstractDemoActivity")
-                .addAnnotation(JavaPoet.class)
+                .addAnnotation(annoSpec)
                 .addModifiers(new Modifier[]{Modifier.ABSTRACT})
                 .addMethods(methodSpecList)
                 .addSuperinterface(Activity.class)

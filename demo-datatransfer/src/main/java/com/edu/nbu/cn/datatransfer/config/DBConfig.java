@@ -27,7 +27,7 @@ public class DBConfig {
     @Autowired
     private DBDataSourceFactory dbDataSourceFactory;
 
-    @Bean("customDataSource")
+    @Bean
     public DataSource dataSource() throws DBConnectionException {
         return defineDataSource();
     }

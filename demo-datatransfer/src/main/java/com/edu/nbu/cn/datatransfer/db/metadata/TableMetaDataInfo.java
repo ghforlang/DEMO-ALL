@@ -1,5 +1,6 @@
 package com.edu.nbu.cn.datatransfer.db.metadata;
 
+import com.edu.nbu.cn.datatransfer.contants.TableType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,5 @@ public class TableMetaDataInfo {
     private String tableName;
     private List<ColumnMetaDataInfo> columnMetaDatas;
     private String comments;
+    private TableType tableType;
 }

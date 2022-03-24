@@ -1,5 +1,7 @@
 package javapoet.annotation;
 
+import javapoet.TypeEnum;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -19,4 +21,6 @@ public @interface JavaPoet {
      * @return
      */
     String value() default "default";
+
+    TypeEnum type();
 }

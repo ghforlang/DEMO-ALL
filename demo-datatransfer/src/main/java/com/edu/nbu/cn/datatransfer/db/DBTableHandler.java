@@ -1,14 +1,13 @@
 package com.edu.nbu.cn.datatransfer.db;
 
 import com.alibaba.excel.util.CollectionUtils;
+import com.edu.nbu.cn.datatransfer.config.DBProperties;
+import com.edu.nbu.cn.datatransfer.contants.TableType;
 import com.edu.nbu.cn.datatransfer.db.metadata.ColumnMetaDataInfo;
 import com.edu.nbu.cn.datatransfer.db.metadata.TableMetaDataInfo;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -18,6 +17,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,8 +35,9 @@ import java.util.stream.Collectors;
 public class DBTableHandler {
 
     @Autowired
-    @Qualifier("customDataSource")
     private DataSource dataSource;
+    @Autowired
+    private DBProperties dbProperties;
 
     private static final String DB_SCHEMA = "TTT";
     private static final String TABLE_SCHEMA_QUERY_SQL = "SELECT TABLE_NAME,CREATE_TIME,TABLE_ROWS,TABLE_COMMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = ";
@@ -74,8 +75,16 @@ public class DBTableHandler {
             while(tables.next()){
                 TableMetaDataInfo tableMetaDataInfo = new TableMetaDataInfo();
                 tableMetaDataInfo.setTableName(tables.getString(1));
-//                tableMetaDataInfo.setCreateTime(LocalDateTime.parse(tables.getString(2)));
+                if(StringUtils.isNotBlank(tables.getString(2))){
+                tableMetaDataInfo.setCreateTime(LocalDateTime.parse(tables.getString(2), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")));
+                }
                 tableMetaDataInfo.setComments(tables.getString(4));
+                if(dbProperties.getSourceTableNames().contains(tableMetaDataInfo.getTableName())){
+                    tableMetaDataInfo.setTableType(TableType.SOURCE);
+                }
+                if(dbProperties.getTargetTableNames().contains(tableMetaDataInfo.getTableName())){
+                    tableMetaDataInfo.setTableType(TableType.TARGET);
+                }
                 tableMetaDataInfoMap.put(tables.getString(1),tableMetaDataInfo);
             }
         } catch (SQLException throwables) {
@@ -167,9 +176,6 @@ public class DBTableHandler {
         return null;
     }
 
-//    private JDBCType dealWithJDBCType(String type){
-//
-//    }
 
     private boolean dealWithNullable(int nullableValue){
        switch (nullableValue){

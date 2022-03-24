@@ -1,10 +1,5 @@
 package com.edu.nbu.cn.datatransfer.db.parser;
 
-import com.edu.nbu.cn.datatransfer.exception.IllegalNameException;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
-
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -23,7 +18,6 @@ public class TableNameParser extends NameParser{
     }
 
     public static String columnName2FieldName(String columnName){
-        System.out.println(columnName);
         return parseUnderlineName(columnName);
     }
 

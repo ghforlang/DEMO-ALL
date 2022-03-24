@@ -2,6 +2,7 @@ package com.edu.nbu.cn.datatransfer.generator;
 
 import com.edu.nbu.cn.datatransfer.anno.Transfer;
 import com.edu.nbu.cn.datatransfer.anno.TransferColumn;
+import com.edu.nbu.cn.datatransfer.contants.TableType;
 import com.edu.nbu.cn.datatransfer.db.DBTableHandler;
 import com.edu.nbu.cn.datatransfer.db.metadata.ColumnMetaDataInfo;
 import com.edu.nbu.cn.datatransfer.db.metadata.TableMetaDataInfo;
@@ -9,6 +10,8 @@ import com.edu.nbu.cn.datatransfer.db.parser.TableNameParser;
 import com.edu.nbu.cn.datatransfer.exception.IllegalNameException;
 import com.edu.nbu.cn.datatransfer.registry.TypeRegistry;
 import com.google.common.collect.Maps;
+import com.squareup.javapoet.AnnotationSpec;
+import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
@@ -25,6 +28,7 @@ import javax.annotation.PostConstruct;
 import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -107,11 +111,16 @@ public class JavaCodeGenerator extends AbstractGenerator<String,String>{
         List<FieldSpec> fieldSpecList = new ArrayList<>();
         TableMetaDataInfo tableMetaDataInfo = dbTableHandler.tableMetaDataInfoMap().get(tableName);
         tableMetaDataInfo.getColumnMetaDatas().forEach(columnMetaDataInfo -> {
-            fieldSpecList.add(generateField(columnMetaDataInfo));
+            fieldSpecList.add(generateField(tableMetaDataInfo.getTableType(),columnMetaDataInfo));
         });
 
+
+        AnnotationSpec annotationSpec = AnnotationSpec.builder(Transfer.class)
+                .addMember("sourceType","$T.$L", TableType.class,tableMetaDataInfo.getTableType())
+                .build();
+
         TypeSpec typeSpec = TypeSpec.classBuilder(tableName2ClassNameMap.get(tableName))
-                .addAnnotation(Transfer.class)
+                .addAnnotation(annotationSpec)
                 .addAnnotation(Getter.class)
                 .addAnnotation(Setter.class)
                 .addFields(fieldSpecList)
@@ -120,9 +129,10 @@ public class JavaCodeGenerator extends AbstractGenerator<String,String>{
         return typeSpec;
     }
 
-    public FieldSpec generateField(ColumnMetaDataInfo columnMetaData){
+    public FieldSpec generateField(TableType tableType,ColumnMetaDataInfo columnMetaData){
         Map<String,POJOFieldMetaDataInfo> fieldMetaDataInfoMap = tableColumn2POJOFieldMap.get(columnMetaData.getTableName());
         POJOFieldMetaDataInfo fieldMetaDataInfo = fieldMetaDataInfoMap.get(columnMetaData.getColumnName());
+
         FieldSpec fieldSpec = FieldSpec.builder(fieldMetaDataInfo.getFieldType(),fieldMetaDataInfo.getFieldName())
                 .addAnnotation(TransferColumn.class)
                 .addJavadoc(fieldMetaDataInfo.getComments())

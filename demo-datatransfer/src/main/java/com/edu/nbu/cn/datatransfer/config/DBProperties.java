@@ -1,5 +1,6 @@
 package com.edu.nbu.cn.datatransfer.config;
 
+import com.alibaba.fastjson.JSON;
 import com.edu.nbu.cn.datatransfer.contants.DialectEnum;
 import com.edu.nbu.cn.datatransfer.model.db.DBConnectionInfo;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +31,9 @@ public class DBProperties implements InitializingBean {
 
     // @Value("${dialect}")
     private String dialectToUse;
+
+    private List<String> sourceTableNames;
+    private List<String> targetTableNames;
 
     // @Value("${mysql.url}")
     private String mysqlUrl;
