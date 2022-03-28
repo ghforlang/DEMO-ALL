@@ -4,9 +4,6 @@ import com.edu.nbu.cn.datatransfer.core.pipeline.DefaultPipeline;
 import com.edu.nbu.cn.datatransfer.core.pipeline.DefaultStage;
 import com.edu.nbu.cn.datatransfer.core.pipeline.Stage;
 import com.edu.nbu.cn.datatransfer.core.source.DefaultExecutor;
-import com.edu.nbu.cn.datatransfer.core.source.SQLScriptStageResource;
-import com.edu.nbu.cn.datatransfer.core.source.StageResource;
-import lombok.Builder;
 
 /**
  * @author laoshi . hua
