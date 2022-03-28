@@ -1,9 +1,9 @@
 package com.edu.nbu.cn.datatransfer.core.pipeline;
 
+
+import com.edu.nbu.cn.datatransfer.core.source.DefaultStageResource;
 import com.edu.nbu.cn.datatransfer.core.source.Executor;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author laoshi . hua
@@ -25,6 +25,39 @@ public class DefaultStage extends AbstractStage {
         this.executor = executor;
     }
 
+    public static class Builder{
+        private String name;
+        private Integer order;
+        private String sourceName;
+        private Executor executor;
+
+        public Builder(String name){
+            this.name = name;
+        }
+
+        public static DefaultStage.Builder builder(String name){
+            return new Builder(name);
+        }
+
+        public  DefaultStage.Builder sourceName(String sourceName){
+            this.sourceName = sourceName;
+            return this;
+        }
+
+        public DefaultStage.Builder order(Integer order){
+            this.order = order;
+            return this;
+        }
+
+        public DefaultStage.Builder executor(Executor executor){
+            this.executor =  executor;
+            return this;
+        }
+
+        public DefaultStage build(){
+            return new DefaultStage(name, order, new DefaultStageResource(sourceName),executor);
+        }
+    }
 
     @Override
     public StageResource resource() {

@@ -1,6 +1,12 @@
 package com.edu.nbu.cn.datatransfer.core;
 
 import com.edu.nbu.cn.datatransfer.core.pipeline.DefaultPipeline;
+import com.edu.nbu.cn.datatransfer.core.pipeline.DefaultStage;
+import com.edu.nbu.cn.datatransfer.core.pipeline.Stage;
+import com.edu.nbu.cn.datatransfer.core.source.DefaultExecutor;
+import com.edu.nbu.cn.datatransfer.core.source.SQLScriptStageResource;
+import com.edu.nbu.cn.datatransfer.core.source.StageResource;
+import lombok.Builder;
 
 /**
  * @author laoshi . hua
@@ -13,6 +19,14 @@ public class Test {
 
         DefaultPipeline pipeline = new DefaultPipeline();
 
-        pipeline.plugin();
+        DefaultStage stage1 = new DefaultStage.Builder("test")
+                .sourceName("test.sql")
+                .executor(new DefaultExecutor())
+                .order(112)
+                .build();
+
+        pipeline.plugin(new Stage[]{stage1});
+
+        pipeline.execute();
     }
 }

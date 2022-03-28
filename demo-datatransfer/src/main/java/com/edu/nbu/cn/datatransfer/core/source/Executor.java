@@ -5,7 +5,7 @@ package com.edu.nbu.cn.datatransfer.core.source;
  * @version 1.0 2022/3/25-3:22 下午
  * @since 1.0
  */
-public interface Executor<T> {
+public interface Executor<T> extends NameAwared{
 
     void execute(StageResource stageResource);
 

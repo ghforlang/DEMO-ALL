@@ -4,11 +4,11 @@ import org.apache.poi.ss.formula.functions.T;
 
 /**
  * @author laoshi . hua
- * @version 1.0 2022/3/25-4:08 下午
+ * @version 1.0 2022/3/28-1:41 下午
  * @since 1.0
  */
-public class SQLScriptExecutor extends AbstractExecutor {
-
+public class DefaultExecutor extends AbstractExecutor{
+    private String executorName = "defaultExecutor";
 
     @Override
     public void execute(StageResource stageResource) {
@@ -20,8 +20,9 @@ public class SQLScriptExecutor extends AbstractExecutor {
         return super.executeWithReturn(stageResource);
     }
 
+
     @Override
     public String name() {
-        return null;
+        return executorName;
     }
 }
