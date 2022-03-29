@@ -14,6 +14,8 @@
         <property name="getB1Name" value="#{b1.getName()}"/>
         <property name="longerThan3" value="#{b1.name.length() ge 3}"/>
         <property name="numBool"  value="#{!true}"/>
+        <property name="PI" value="#{T(java.lang.Math).PI}"/>
+        <property name="elvis" value="#{b1.name?:'others'}"/>
 <!--        <property name="name" value=""/>-->
     </bean>
     

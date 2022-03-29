@@ -25,6 +25,15 @@ public class TestBean {
     private boolean numBool;
     @Value("#{numStr}")
     private String numStr;
+    @Value("#{PI}")
+    private Double PI;
+    @Value("#{elvis}")
+    private String elvis;
+
+
+    private static Double getMath(){
+        return Math.PI ;
+    }
 
     public String getName() {
         return name;
