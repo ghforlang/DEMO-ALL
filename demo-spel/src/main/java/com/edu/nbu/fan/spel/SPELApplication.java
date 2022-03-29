@@ -26,12 +26,20 @@ public class SPELApplication {
     private static final SPELApplication application = new SPELApplication();
 
     public static void main(String[] args) throws AccessException {
+        application.testBeanName();
+//        application.testSpringContainer();
+//        application.testStandardContainer();
+    }
+
+    public void testBeanName(){
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring-bean.xml");
         TestBean tb = (TestBean) ctx.getBean("test");
         System.out.println(tb.getName());
-
-        application.testSpringContainer();
-        application.testStandardContainer();
+        System.out.println(tb.getB1().getName());
+        System.out.println(tb.getB1Name());
+        System.out.println(tb.getGetB1Name());
+        System.out.println(tb.isLongerThan3());
+        System.out.println(tb.isNumBool());
     }
 
     // default

@@ -9,6 +9,15 @@
 
     <bean id="test" class="com.edu.nbu.fan.spel.bean.TestBean">
         <constructor-arg name="name" value="${com.edu.nbu.fan.customName}"/>
+        <property name="b1" value="#{b1}"/>
+        <property name="b1Name" value="#{b1.name}"/>
+        <property name="getB1Name" value="#{b1.getName()}"/>
+        <property name="longerThan3" value="#{b1.name.length() ge 3}"/>
+        <property name="numBool"  value="#{!true}"/>
 <!--        <property name="name" value=""/>-->
+    </bean>
+    
+    <bean id="b1" class="com.edu.nbu.fan.spel.bean.Bean">
+        <property name="name" value="${com.edu.nbu.fan.name}"/>
     </bean>
 </beans>
