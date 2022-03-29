@@ -27,8 +27,8 @@ public class SPELApplication {
 
     public static void main(String[] args) throws AccessException {
         application.testBeanName();
-//        application.testSpringContainer();
-//        application.testStandardContainer();
+        application.testSpringContainer();
+        application.testStandardContainer();
     }
 
     public void testBeanName(){
