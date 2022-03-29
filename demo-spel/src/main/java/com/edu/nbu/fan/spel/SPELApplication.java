@@ -33,8 +33,8 @@ public class SPELApplication {
     private static final SPELApplication application = new SPELApplication();
 
     public static void main(String[] args) throws AccessException, NoSuchMethodException {
-        application.testBeanExpression();
-//        application.testCollection();
+//        application.testBeanExpression();
+        application.testCollection();
 //        application.testMethod();
 //        application.testBeanId();
 //        application.testBeanName();
@@ -80,6 +80,7 @@ public class SPELApplication {
         List<Integer> intList = Arrays.asList(1,3,5,7);
         ctx.setVariable("intList",intList);
         System.out.println(JSON.toJSONString(intList));
+        System.out.println(JSON.toJSONString(parser.parseExpression("#intList.?[#this%2==1]").getValue(ctx,List.class)));
         // 过滤，处理后生成新的list
         System.out.println(JSON.toJSONString(parser.parseExpression("#intList.?[#this%2==1].![#this + 1]").getValue(ctx,List.class)));
 
