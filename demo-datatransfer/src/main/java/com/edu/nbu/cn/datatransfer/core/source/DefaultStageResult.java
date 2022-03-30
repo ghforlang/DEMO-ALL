@@ -7,21 +7,22 @@ import org.apache.poi.ss.formula.functions.T;
  * @version 1.0 2022/3/25-4:48 下午
  * @since 1.0
  */
-public class DefaultStageResult implements StageResult<T>{
+public class DefaultStageResult implements StageResult<String>{
 
-    private T data;
+    private String data;
 
-    public DefaultStageResult(T data) {
+
+    public DefaultStageResult(String data) {
         this.data = data;
     }
 
 
     @Override
-    public T result() {
+    public String result() {
         return data;
     }
 
-    public static DefaultStageResult of(T t){
+    public static DefaultStageResult of(String t){
         return new DefaultStageResult(t);
     }
 }

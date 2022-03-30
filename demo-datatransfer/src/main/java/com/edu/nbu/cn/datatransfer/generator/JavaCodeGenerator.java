@@ -11,7 +11,6 @@ import com.edu.nbu.cn.datatransfer.exception.IllegalNameException;
 import com.edu.nbu.cn.datatransfer.registry.TypeRegistry;
 import com.google.common.collect.Maps;
 import com.squareup.javapoet.AnnotationSpec;
-import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
@@ -20,7 +19,6 @@ import lombok.Setter;
 import lombok.SneakyThrows;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +26,6 @@ import javax.annotation.PostConstruct;
 import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -88,7 +85,7 @@ public class JavaCodeGenerator extends AbstractGenerator<String,String>{
         return s;
     }
 
-    public void generateCode(String tableName){
+    private void generateCode(String tableName){
         if(StringUtils.isBlank(tableName)){
             throw new IllegalNameException("illegal tableName when generate CODE!");
         }
@@ -129,7 +126,7 @@ public class JavaCodeGenerator extends AbstractGenerator<String,String>{
         return typeSpec;
     }
 
-    public FieldSpec generateField(TableType tableType,ColumnMetaDataInfo columnMetaData){
+    private FieldSpec generateField(TableType tableType,ColumnMetaDataInfo columnMetaData){
         Map<String,POJOFieldMetaDataInfo> fieldMetaDataInfoMap = tableColumn2POJOFieldMap.get(columnMetaData.getTableName());
         POJOFieldMetaDataInfo fieldMetaDataInfo = fieldMetaDataInfoMap.get(columnMetaData.getColumnName());
 

@@ -1,8 +1,14 @@
-package com.edu.nbu.cn.datatransfer.core.pipeline;/**
+package com.edu.nbu.cn.datatransfer.core.pipeline;
+
+import org.springframework.stereotype.Component;
+
+/**
 * @author laoshi . hua
 * @since 1.0 
 * @version 1.0 2022/3/25-5:34 下午
-*/public class DefaultPipeline extends AbstractPipeline{
+*/
+@Component
+public class DefaultPipeline extends AbstractPipeline{
 
 
     @Override

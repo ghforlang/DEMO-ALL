@@ -1,7 +1,8 @@
 package com.edu.nbu.cn.datatransfer.core.pipeline;
 
-import com.edu.nbu.cn.datatransfer.core.source.Executor;
+import com.edu.nbu.cn.datatransfer.core.executor.Executor;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
+import com.edu.nbu.cn.datatransfer.core.source.StageResult;
 import org.springframework.core.Ordered;
 
 /**
@@ -16,4 +17,10 @@ public interface Stage extends Comparable<Stage>, Ordered {
     StageResource resource();
 
     Executor getExecutor();
+
+    StageResult stageResult();
+
+    boolean usePreviousResult();
+
+    void assembleResult(StageResult result);
 }
