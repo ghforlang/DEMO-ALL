@@ -86,4 +86,5 @@ public class DefaultStage<T> extends AbstractStage {
     public void assembleResult(StageResult result) {
         this.result = result;
     }
+
 }

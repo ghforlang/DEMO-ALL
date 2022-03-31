@@ -56,4 +56,17 @@ public abstract class AbstractStage<T> implements Stage{
     public int compareTo(Stage o) {
         return this.order - o.getOrder();
     }
+
+    public void setExecutor(Executor executor){
+        this.executor = executor;
+    }
+
+    public void setOrder(Integer order){
+        this.order = order;
+    }
+
+    public void setStageResource(StageResource stageResource){
+        this.stageResource = stageResource;
+    }
+
 }

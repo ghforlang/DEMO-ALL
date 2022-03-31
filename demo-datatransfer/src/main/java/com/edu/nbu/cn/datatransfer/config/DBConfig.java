@@ -3,6 +3,7 @@ package com.edu.nbu.cn.datatransfer.config;
 import com.edu.nbu.cn.datatransfer.contants.DialectEnum;
 import com.edu.nbu.cn.datatransfer.exception.DBConnectionException;
 import com.edu.nbu.cn.datatransfer.factory.DBDataSourceFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,6 +14,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * @author laoshi . hua
@@ -20,6 +23,7 @@ import javax.sql.DataSource;
  * @since 1.0
  */
 @Configuration
+@Slf4j
 public class DBConfig {
 
     @Autowired
@@ -51,6 +55,17 @@ public class DBConfig {
         return sqlSessionFactory;
     }
 
+
+    @Bean
+    public Connection sqlConnection(){
+        try {
+            return defineDataSource().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.error("fecth connection failed!");
+        }
+        return null;
+    }
     private DataSource defineDataSource() throws DBConnectionException {
         if(StringUtils.isBlank(dbProperties.getDialectToUse())){
             throw new DBConnectionException("choose one dialect at least!");

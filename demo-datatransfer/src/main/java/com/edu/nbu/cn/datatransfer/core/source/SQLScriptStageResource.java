@@ -10,6 +10,7 @@ import com.edu.nbu.cn.datatransfer.exception.IllegalNameException;
 public class SQLScriptStageResource extends ScriptStageResource {
     private static final  String file_suffix = ".sql";
 
+
     private String originalSqlFileName;
 
     public SQLScriptStageResource(String sourceName) {
@@ -25,6 +26,10 @@ public class SQLScriptStageResource extends ScriptStageResource {
             throw new IllegalNameException("illegal sql file name [" + sourceName + "]");
         }
         this.originalSqlFileName = originalSqlFileName;
+    }
+
+    public String getOriginalSqlFileName() {
+        return originalSqlFileName;
     }
 
 

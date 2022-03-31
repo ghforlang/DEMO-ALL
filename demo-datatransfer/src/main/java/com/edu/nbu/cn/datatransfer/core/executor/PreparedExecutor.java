@@ -1,6 +1,6 @@
 package com.edu.nbu.cn.datatransfer.core.executor;
 
-
+import com.edu.nbu.cn.datatransfer.core.source.DefaultStageResult;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResult;
 import org.springframework.beans.factory.InitializingBean;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author laoshi . hua
- * @version 1.0 2022/3/28-1:41 下午
+ * @version 1.0 2022/3/31-3:43 PM
  * @since 1.0
  */
 @Component
-public class DefaultExecutor extends AbstractExecutor<String> implements InitializingBean {
+public class PreparedExecutor extends  AbstractExecutor<String> implements InitializingBean {
 
     @Autowired
     private ExecutorSupport executorSupport;
@@ -21,22 +21,25 @@ public class DefaultExecutor extends AbstractExecutor<String> implements Initial
     @Override
     public void execute(StageResource stageResource, StageResult previousStageResult) {
         super.execute(stageResource,previousStageResult);
+        // do something to prepare
+        logger.info("all operations has been prepared!");
     }
 
     @Override
     public StageResult<String> executeWithReturn(StageResource stageResource,StageResult previousStageResult) {
-        return super.executeWithReturn(stageResource,previousStageResult);
+        super.executeWithReturn(stageResource,previousStageResult);
+        // do something to prepare
+        return DefaultStageResult.of("success!");
     }
-
 
     @Override
     public String name() {
-        return InternalExecutorType.DEFAULT_EXECUTOR.getName();
+        return InternalExecutorType.PREPARED_EXECUTOR.getName();
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        logger.info("register to executorRegistry,executor[" + this.name() + "]");
+        logger.debug("register to executorRegistry,executor[" + this.name() + "]");
         executorSupport.registerExecutor(this);
     }
 }

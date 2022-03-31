@@ -3,6 +3,7 @@ package com.edu.nbu.cn.datatransfer.core.executor;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResult;
 import com.edu.nbu.cn.datatransfer.generator.JavaCodeGenerator;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,16 +13,16 @@ import org.springframework.stereotype.Component;
  * @since 1.0
  */
 @Component
-public class CodeGeneratorExecutor extends AbstractExecutor{
+public class CodeGeneratorExecutor extends AbstractExecutor implements InitializingBean {
 
     @Autowired
     private JavaCodeGenerator javaCodeGenerator;
-
-    private static final String executorName = "codeGeneratorExecutor";
+    @Autowired
+    private ExecutorSupport executorSupport;
 
     @Override
     public String name() {
-        return executorName;
+        return InternalExecutorType.CODE_GENERATOR_EXECUTOR.getName();
     }
 
     @Override
@@ -33,5 +34,11 @@ public class CodeGeneratorExecutor extends AbstractExecutor{
     @Override
     public StageResult executeWithReturn(StageResource stageResource, StageResult previousStageResult) {
         throw  new UnsupportedOperationException("not supportOperation!");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        logger.info("register to executorRegistry,executor[" + this.name() + "]");
+        executorSupport.registerExecutor(this);
     }
 }

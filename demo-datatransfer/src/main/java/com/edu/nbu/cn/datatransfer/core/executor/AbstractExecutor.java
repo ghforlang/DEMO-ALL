@@ -21,12 +21,12 @@ public abstract class AbstractExecutor<T> implements Executor {
         if(stageResource.hasResult()){
             System.out.println("Resource need return result,please use executeWithReturn[" + stageResource.sourceName() + "]");
         }
-        logger.info("execute Resource [" + stageResource.sourceName() + "]" + ",using executor[" + name() + "]");
+        logger.info("executing Resource [" + stageResource.sourceName() + "]" + ",using executor[" + name() + "]");
     }
 
     @Override
     public StageResult<T> executeWithReturn(StageResource stageResource,StageResult previousStageResult) {
-        logger.info("executeWithReturn Resource [" + stageResource.sourceName() + "],using executor[" + name() +"]");
+        logger.info("executingWithReturn Resource [" + stageResource.sourceName() + "],using executor[" + name() +"]");
         return null;
     }
 }

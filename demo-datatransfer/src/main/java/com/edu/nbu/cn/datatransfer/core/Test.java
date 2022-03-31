@@ -21,13 +21,41 @@ public class Test {
 
 
     public static void main(String[] args) {
-        testPipeline();
+//        testPipeline();
 //        testListIterator();
 //        testPreviousMap();
     }
 
     private static void testPipeline(){
+        DefaultPipeline pipeline = new DefaultPipeline();
 
+        DefaultStage stage = new DefaultStage.Builder("codeGenerator")
+                .sourceName("codeGenerator")
+                .executor(new CodeGeneratorExecutor())
+                .order(1)
+                .stageResult(DefaultStageResult.of("success"))
+                .usePreviousResult(false)
+                .build();
+
+        DefaultStage stage1 = new DefaultStage.Builder("test")
+                .sourceName("test.sql")
+                .executor(new DefaultExecutor())
+                .order(112)
+                .stageResult(DefaultStageResult.of("Success"))
+                .usePreviousResult(false)
+                .build();
+
+        DefaultStage stage2 = new DefaultStage.Builder("ttt")
+                .sourceName("ttt.sql")
+                .executor(new DefaultExecutor())
+                .order(10)
+                .stageResult(DefaultStageResult.of("Success"))
+                .usePreviousResult(false)
+                .build();
+        // 装配stages
+        pipeline.plugin(new Stage[]{stage,stage1,stage2});
+        // 执行stages
+        pipeline.execute();
     }
 
     private static void testListIterator(){
@@ -44,4 +72,7 @@ public class Test {
         }
     }
 
+    private static void testSQLScriptExecutor(){
+
+    }
 }
