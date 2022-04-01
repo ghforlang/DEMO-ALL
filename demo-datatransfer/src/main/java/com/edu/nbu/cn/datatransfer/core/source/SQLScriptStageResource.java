@@ -36,6 +36,11 @@ public class SQLScriptStageResource extends ScriptStageResource {
 
     @Override
     public String sourceName() {
-        return originalSqlFileName;
+        return sourceName;
+    }
+
+    @Override
+    public String sourceType() {
+        return InternalStageResourceType.SQL_SCRIPT.getTypeName();
     }
 }

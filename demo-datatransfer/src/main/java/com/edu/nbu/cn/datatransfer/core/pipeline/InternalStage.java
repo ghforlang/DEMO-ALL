@@ -10,7 +10,8 @@ public enum InternalStage {
     PREPARED("prepared"),
     DEFAULT("default"),
     CODE_GENERATOR("codeGenerate"),
-    SQL_SCRIPT("sqlScript");
+    SQL_SCRIPT("sqlScript"),
+    JAR_FILE("jarFile");
 
     InternalStage(String name) {
         this.name = name;

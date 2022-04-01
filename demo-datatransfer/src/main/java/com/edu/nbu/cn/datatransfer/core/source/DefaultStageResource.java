@@ -20,4 +20,10 @@ public class DefaultStageResource extends AbstractStageResource{
     public boolean hasResult() {
         return super.hasResult();
     }
+
+    @Override
+    public String sourceType() {
+        return InternalStageResourceType.DEFAULT.getTypeName();
+    }
+
 }

@@ -10,6 +10,7 @@ import com.edu.nbu.cn.datatransfer.core.pipeline.InternalStageType;
 import com.edu.nbu.cn.datatransfer.core.pipeline.Pipeline;
 import com.edu.nbu.cn.datatransfer.core.pipeline.Stage;
 import com.edu.nbu.cn.datatransfer.core.source.DefaultStageResult;
+import com.edu.nbu.cn.datatransfer.core.source.JARStageResource;
 import com.edu.nbu.cn.datatransfer.core.source.SQLScriptStageResource;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class TestPipeline extends BaseTest{
     private Pipeline defaultPipeline;
     @Autowired
     private ExecutorSupport executorSupport;
+
+    private static final String jarFileName = "demo-spel-1.0-SNAPSHOT.jar";
 
     @Test
     public void testPipeline(){
@@ -43,8 +46,14 @@ public class TestPipeline extends BaseTest{
         SQLScriptStageResource stageResource = new SQLScriptStageResource(sqlFileName,Thread.currentThread().getContextClassLoader().getResource("").getPath() + sqlFileName);
         sqlExecuteStage.setStageResource(stageResource);
 
+        DefaultStage jarExecuteStage = InternalStageType.JAR_FILE.getStage();
+        jarExecuteStage.setExecutor(executorSupport.getExecutor(InternalExecutorType.JAR_FILE_EXECUTOR.getName()));
+        jarExecuteStage.setOrder(30);
+        JARStageResource jarStageResource = new JARStageResource(jarFileName,Thread.currentThread().getContextClassLoader().getResource("").getPath() + jarFileName);
+        jarExecuteStage.setStageResource(jarStageResource);
+
         // 装配stages
-        defaultPipeline.plugin(new Stage[]{preparedStage,codeGeneratorStage,sqlExecuteStage});
+        defaultPipeline.plugin(new Stage[]{preparedStage,codeGeneratorStage,sqlExecuteStage,jarExecuteStage});
         // 执行stages
         defaultPipeline.execute();
     }

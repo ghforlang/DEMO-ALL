@@ -23,14 +23,6 @@ public class AbstractPipeline implements Pipeline{
 
     private final Map<String,Stage> stageRegistry = new HashMap<>();
     private static List<Stage> stages = new LinkedList<>();
-    private static final Map<Stage,Stage> previousStageMap = new HashMap<>();
-
-    static{
-        ListIterator<Stage> listIterator = stages.listIterator();
-        while (listIterator.hasPrevious()){
-            Stage stage = listIterator.previous();
-        }
-    }
 
 
     private void plugin(Stage stage) {

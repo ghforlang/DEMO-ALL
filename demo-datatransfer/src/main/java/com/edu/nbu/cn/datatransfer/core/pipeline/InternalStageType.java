@@ -11,7 +11,8 @@ public enum InternalStageType {
     PREPARED(InternalStage.PREPARED.getName(), StageHolder.preparedStage),
     DEFAULT(InternalStage.DEFAULT.getName(), StageHolder.commonStage),
     CODE_GENERATOR(InternalStage.CODE_GENERATOR.getName(), StageHolder.codeGenerateStage),
-    SQL_SCRIPT(InternalStage.SQL_SCRIPT.getName(), StageHolder.sqlExecuteStage)
+    SQL_SCRIPT(InternalStage.SQL_SCRIPT.getName(), StageHolder.sqlExecuteStage),
+    JAR_FILE(InternalStage.JAR_FILE.getName(),StageHolder.jarFileExecuteStage)
     ;
 
     public String getName() {
@@ -53,5 +54,10 @@ public enum InternalStageType {
                .stageResult(DefaultStageResult.of("Success"))
                .usePreviousResult(false)
                .build();
+
+        public static DefaultStage jarFileExecuteStage =  new DefaultStage.Builder(InternalStage.JAR_FILE.getName())
+                .stageResult(DefaultStageResult.of("Success"))
+                .usePreviousResult(false)
+                .build();
     }
 }

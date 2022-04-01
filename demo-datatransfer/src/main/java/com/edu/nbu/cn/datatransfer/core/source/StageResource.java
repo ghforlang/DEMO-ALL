@@ -10,4 +10,6 @@ public interface StageResource {
     String sourceName();
 
     boolean hasResult();
+
+    String sourceType();
 }
