@@ -1,22 +1,16 @@
 package com.edu.nbu.cn.datatransfer.core.executor;
 
-import com.alibaba.fastjson.JSON;
 import com.edu.nbu.cn.datatransfer.core.source.DefaultStageResult;
 import com.edu.nbu.cn.datatransfer.core.source.JARStageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResult;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.Jar;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.jar.Attributes;
@@ -28,14 +22,17 @@ import java.util.jar.Manifest;
  * @version 1.0 2022/3/31-4:23 PM
  * @since 1.0
  */
-@Component
+
 @Slf4j
-public class JarFileExecutor extends AbstractExecutor<String> implements InitializingBean {
+public class JarFileExecutor extends AbstractExecutor<String> {
 
     private static final String MAIN_CLASS_ATTR_NAME = "Main-Class";
 
-    @Autowired
-    private ExecutorSupport executorSupport;
+    public JarFileExecutor() {
+        log.info("register to executorRegistry,executor[" + this.name() + "]");
+        ExecutorRegistry.registerExecutor(this);
+    }
+
 
     @Override
     public void execute(StageResource stageResource, StageResult stageResult) {
@@ -54,11 +51,6 @@ public class JarFileExecutor extends AbstractExecutor<String> implements Initial
         return InternalExecutorType.JAR_FILE_EXECUTOR.getName();
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        logger.info("register to executorRegistry,executor[" + this.name() + "]");
-        executorSupport.registerExecutor(this);
-    }
 
     private  DefaultStageResult commonExecute(StageResource stageResource){
         if(!(stageResource instanceof JARStageResource)){

@@ -4,10 +4,8 @@ import com.edu.nbu.cn.datatransfer.core.source.DefaultStageResult;
 import com.edu.nbu.cn.datatransfer.core.source.SQLScriptStageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResult;
-import com.edu.nbu.cn.datatransfer.db.mybatis.SQLScriptRunnerWrapper;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.edu.nbu.cn.datatransfer.core.mybatis.SQLScriptRunnerWrapper;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,13 +15,17 @@ import java.io.IOException;
  * @version 1.0 2022/3/25-4:08 下午
  * @since 1.0
  */
-@Component
-public class SQLScriptExecutor extends AbstractExecutor<String> implements InitializingBean {
+@Slf4j
+public class SQLScriptExecutor extends AbstractExecutor<String> {
 
-    @Autowired
-    private ExecutorSupport executorSupport;
-    @Autowired
+
     private SQLScriptRunnerWrapper sqlScriptRunnerWrapper;
+
+    public SQLScriptExecutor(SQLScriptRunnerWrapper sqlScriptRunnerWrapper) {
+        this.sqlScriptRunnerWrapper = sqlScriptRunnerWrapper;
+        logger.info("register to executorRegistry,executor[" + this.name() + "]");
+        ExecutorRegistry.registerExecutor(this);
+    }
 
     @Override
     public void execute(StageResource stageResource, StageResult stageResult) {
@@ -43,11 +45,6 @@ public class SQLScriptExecutor extends AbstractExecutor<String> implements Initi
         return InternalExecutorType.SQL_SCRIPT_EXECUTOR.getName();
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        logger.info("register to executorRegistry,executor[" + this.name() + "]");
-        executorSupport.registerExecutor(this);
-    }
 
     private void commonExecute(StageResource stageResource){
         if(stageResource instanceof SQLScriptStageResource){

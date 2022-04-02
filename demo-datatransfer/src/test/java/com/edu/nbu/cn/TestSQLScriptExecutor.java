@@ -1,11 +1,11 @@
 package com.edu.nbu.cn;
 
-import com.edu.nbu.cn.datatransfer.core.executor.SQLScriptExecutor;
+import com.edu.nbu.cn.datatransfer.core.executor.ExecutorRegistry;
+import com.edu.nbu.cn.datatransfer.core.executor.InternalExecutorType;
 import com.edu.nbu.cn.datatransfer.core.source.DefaultStageResult;
 import com.edu.nbu.cn.datatransfer.core.source.SQLScriptStageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author laoshi . hua
@@ -13,9 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @since 1.0
  */
 public class TestSQLScriptExecutor extends BaseTest{
-
-    @Autowired
-    private SQLScriptExecutor sqlScriptExecutor;
 
     private static String absoluteSqlFilePath ;
     private static final String sqlScriptSqlName = "people.sql";
@@ -27,6 +24,6 @@ public class TestSQLScriptExecutor extends BaseTest{
     @Test
     public void testExecute(){
         StageResource sqlStageResource = new SQLScriptStageResource("people.sql",absoluteSqlFilePath + sqlScriptSqlName);
-        sqlScriptExecutor.execute(sqlStageResource, DefaultStageResult.of("success"));
+        ExecutorRegistry.getExecutor(InternalExecutorType.SQL_SCRIPT_EXECUTOR.getName()).execute(sqlStageResource, DefaultStageResult.of("success"));
     }
 }

@@ -2,23 +2,21 @@ package com.edu.nbu.cn.datatransfer.core.executor;
 
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResult;
-import com.edu.nbu.cn.datatransfer.generator.JavaCodeGenerator;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author laoshi . hua
  * @version 1.0 2022/3/30-6:21 PM
  * @since 1.0
  */
-@Component
-public class CodeGeneratorExecutor extends AbstractExecutor implements InitializingBean {
+@Slf4j
+public class CodeGeneratorExecutor extends JarFileExecutor{
 
-    @Autowired
-    private JavaCodeGenerator javaCodeGenerator;
-    @Autowired
-    private ExecutorSupport executorSupport;
+    public CodeGeneratorExecutor() {
+        log.info("register to executorRegistry,executor[" + this.name() + "]");
+        ExecutorRegistry.registerExecutor(this);
+    }
+
 
     @Override
     public String name() {
@@ -27,8 +25,8 @@ public class CodeGeneratorExecutor extends AbstractExecutor implements Initializ
 
     @Override
     public void execute(StageResource stageResource, StageResult previousStageResult) {
-        javaCodeGenerator.generator(stageResource.sourceName());
-        logger.info("execute Resource [" + stageResource.sourceName() + "]" + ",using executor[" + name() + "]");
+        super.execute(stageResource,previousStageResult);
+        log.info("execute Resource [" + stageResource.sourceName() + "]" + ",using executor[" + name() + "]");
     }
 
     @Override
@@ -36,9 +34,4 @@ public class CodeGeneratorExecutor extends AbstractExecutor implements Initializ
         throw  new UnsupportedOperationException("not supportOperation!");
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        logger.info("register to executorRegistry,executor[" + this.name() + "]");
-        executorSupport.registerExecutor(this);
-    }
 }

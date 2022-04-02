@@ -2,7 +2,6 @@ package com.edu.nbu.cn.datatransfer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
  * @author laoshi . hua
@@ -10,7 +9,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * @since 1.0
  */
 @SpringBootApplication
-@EnableConfigurationProperties
 public class DataTransferApplication {
 
 

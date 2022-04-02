@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 * @since 1.0 
 * @version 1.0 2022/3/25-5:34 下午
 */
-@Component
 public class DefaultPipeline extends AbstractPipeline{
 
 

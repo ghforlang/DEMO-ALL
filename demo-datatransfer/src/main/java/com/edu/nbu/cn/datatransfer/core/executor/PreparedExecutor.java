@@ -3,26 +3,26 @@ package com.edu.nbu.cn.datatransfer.core.executor;
 import com.edu.nbu.cn.datatransfer.core.source.DefaultStageResult;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResult;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author laoshi . hua
  * @version 1.0 2022/3/31-3:43 PM
  * @since 1.0
  */
-@Component
-public class PreparedExecutor extends  AbstractExecutor<String> implements InitializingBean {
+@Slf4j
+public class PreparedExecutor extends  AbstractExecutor<String>{
 
-    @Autowired
-    private ExecutorSupport executorSupport;
+    public PreparedExecutor() {
+        log.debug("register to executorRegistry,executor[" + this.name() + "]");
+        ExecutorRegistry.registerExecutor(this);
+    }
 
     @Override
     public void execute(StageResource stageResource, StageResult previousStageResult) {
         super.execute(stageResource,previousStageResult);
         // do something to prepare
-        logger.info("all operations has been prepared!");
+        log.info("all operations has been prepared!");
     }
 
     @Override
@@ -37,9 +37,4 @@ public class PreparedExecutor extends  AbstractExecutor<String> implements Initi
         return InternalExecutorType.PREPARED_EXECUTOR.getName();
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        logger.debug("register to executorRegistry,executor[" + this.name() + "]");
-        executorSupport.registerExecutor(this);
-    }
 }

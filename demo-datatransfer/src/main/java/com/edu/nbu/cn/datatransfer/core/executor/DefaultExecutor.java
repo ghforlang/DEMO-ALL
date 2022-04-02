@@ -3,20 +3,21 @@ package com.edu.nbu.cn.datatransfer.core.executor;
 
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResult;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author laoshi . hua
  * @version 1.0 2022/3/28-1:41 下午
  * @since 1.0
  */
-@Component
-public class DefaultExecutor extends AbstractExecutor<String> implements InitializingBean {
+@Slf4j
+public class DefaultExecutor extends AbstractExecutor<String> {
 
-    @Autowired
-    private ExecutorSupport executorSupport;
+
+    public DefaultExecutor() {
+        log.info("register to executorRegistry,executor[" + this.name() + "]");
+        ExecutorRegistry.registerExecutor(this);
+    }
 
     @Override
     public void execute(StageResource stageResource, StageResult previousStageResult) {
@@ -32,11 +33,5 @@ public class DefaultExecutor extends AbstractExecutor<String> implements Initial
     @Override
     public String name() {
         return InternalExecutorType.DEFAULT_EXECUTOR.getName();
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        logger.info("register to executorRegistry,executor[" + this.name() + "]");
-        executorSupport.registerExecutor(this);
     }
 }

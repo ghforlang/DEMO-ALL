@@ -35,6 +35,7 @@
         <module>demo-spel</module>
         <module>demo-descriptor</module>
         <module>demo-datatransfer</module>
+        <module>demo-db2pojo</module>
     </modules>
 
     <properties>
