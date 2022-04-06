@@ -1,4 +1,4 @@
-package com.edu.nbu.cn.mybatis.utils;
+package com.edu.nbu.cn.data.cleanout.utils;
 
 
 import com.alibaba.excel.EasyExcel;
@@ -6,7 +6,7 @@ import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.edu.nbu.cn.mybatis.model.ehr.ExcelModel;
+import com.edu.nbu.cn.data.cleanout.model.ehr.ExcelModel;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

@@ -35,7 +35,6 @@
         <module>demo-spel</module>
         <module>demo-descriptor</module>
         <module>demo-datatransfer</module>
-        <module>demo-db2pojo</module>
     </modules>
 
     <properties>
@@ -220,6 +219,7 @@
                 <artifactId>postgresql</artifactId>
                 <version>9.4.1212.jre7</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

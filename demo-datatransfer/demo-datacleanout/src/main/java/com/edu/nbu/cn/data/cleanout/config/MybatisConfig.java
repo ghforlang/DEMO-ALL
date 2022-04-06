@@ -1,5 +1,4 @@
-package com.edu.nbu.cn.mybatis.config;
-
+package com.edu.nbu.cn.data.cleanout.config;
 
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
@@ -13,9 +12,13 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
+/**
+ * @author laoshi . hua
+ * @version 1.0 2022/4/6-6:07 PM
+ * @since 1.0
+ */
 @Configuration
-public class MybatisConfiguration {
-
+public class MybatisConfig {
     @Value("${dbType}")
     private String dbType = "mysql";
 
@@ -48,9 +51,9 @@ public class MybatisConfiguration {
         DataSource ds = null;
         switch (dbType){
             case "mysql": ds = pooledDataSource();
-            break;
+                break;
             case "postgresl": ds = pooledDataSource2();
-            break;
+                break;
             default: ds = pooledDataSource();
         }
 
