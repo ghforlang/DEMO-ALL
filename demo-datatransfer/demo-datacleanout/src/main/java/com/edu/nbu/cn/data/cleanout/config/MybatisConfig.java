@@ -3,6 +3,7 @@ package com.edu.nbu.cn.data.cleanout.config;
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
@@ -23,7 +24,7 @@ public class MybatisConfig {
     private String dbType = "mysql";
 
     @Bean
-    public DataSource pooledDataSource(){
+    public  DataSource pooledDataSource(){
 
         PooledDataSource dataSource = new PooledDataSource();
         dataSource.setDriver("com.mysql.jdbc.Driver");
@@ -35,7 +36,7 @@ public class MybatisConfig {
     }
 
     @Bean
-    public DataSource pooledDataSource2(){
+    public  DataSource pooledDataSource2(){
 
         PooledDataSource dataSource = new PooledDataSource();
         dataSource.setDriver("org.postgresql.Driver");
@@ -61,9 +62,7 @@ public class MybatisConfig {
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setEnvironment(environment);
         configuration.addMappers("com.edu.nbu.cn.mybatis.mapper");
-//        configuration.addLoadedResource("classpath*:/mapper/*.xml");
-//        configuration.addInterceptor(new ForbidWriteInterceptor());
-        XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(this.getClass().getResourceAsStream("/mapper/BasicHealthInfoMapper.xml"), configuration, "mapper/BasicHealthInfoMapper.xml", configuration.getSqlFragments());
+        XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(this.getClass().getResourceAsStream("/mapper/CombinationMapper.xml"), configuration, "mapper/BasicHealthInfoMapper.xml", configuration.getSqlFragments());
         xmlMapperBuilder.parse();
         return configuration;
     }
@@ -72,5 +71,10 @@ public class MybatisConfig {
     public SqlSessionFactory sqlSessionFactory(){
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration());
         return sqlSessionFactory;
+    }
+
+    @Bean
+    public SqlSession session(){
+        return sqlSessionFactory().openSession(true);
     }
 }

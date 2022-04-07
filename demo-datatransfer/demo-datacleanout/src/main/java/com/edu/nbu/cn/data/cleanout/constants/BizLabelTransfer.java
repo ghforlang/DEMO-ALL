@@ -1,7 +1,10 @@
+package com.edu.nbu.cn.data.cleanout.constants;
+
 import com.alibaba.fastjson.JSON;
+import com.edu.nbu.cn.data.cleanout.constants.HealthDataBizLabelEnum;
+import com.edu.nbu.cn.data.cleanout.constants.HealthIndicatorEnum;
 import org.apache.commons.collections4.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -20,8 +23,8 @@ public class BizLabelTransfer {
             return 0L;
         }
         System.out.println("before transfer : " + JSON.toJSONString(bizLabels));
-        Map<String,HealthDataBizLabelEnum> nameLabelMap = HealthDataBizLabelEnum.NAME_MAP;
-        Map<String,HealthIndicatorEnum> nameBitMap = HealthIndicatorEnum.CONTAINED_INDICATORS;
+        Map<String, HealthDataBizLabelEnum> nameLabelMap = HealthDataBizLabelEnum.NAME_MAP;
+        Map<String, HealthIndicatorEnum> nameBitMap = HealthIndicatorEnum.CONTAINED_INDICATORS;
         Map<String,Integer> resultMap = new HashMap<>();
         nameLabelMap.forEach((k,v) ->{
             nameBitMap.forEach((k1,v1) ->{

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.edu.nbu.cn.data.cleanout.mapper.BasicHealthInfoMapper" >
+<mapper namespace="com.edu.nbu.cn.data.cleanout.mapper.CombinationMapper" >
 
     <resultMap id="BaseResultMap" type="com.edu.nbu.cn.data.cleanout.model.ehr.BasicHealthInfo" >
         <id column="id" property="id" jdbcType="VARCHAR" />
@@ -80,6 +80,33 @@
         <result column="biz_labels_data" property="bizLabelsData"/>
     </resultMap>
 
+
+    <resultMap id="extraField0" type="com.edu.nbu.cn.data.cleanout.model.ehr.HealthInfo">
+        <id column="people_id" property="peopleId"/>
+        <id column="abo_blood_type_name" property="aboBloodTypeName"/>
+        <id column="rh_blood_type_name" property="rhBloodTypeName"/>
+        <id column="martial_status_name" property="martialStatusName"/>
+        <id column="fertility_status_name" property="fertilityStatusName"/>
+        <id column="family_diseases" property="familyDiseases"/>
+        <id column="diet_taste_list" property="dietTasteList"/>
+    </resultMap>
+
+    <resultMap id="extraField2" type="com.edu.nbu.cn.data.cleanout.model.ehr.HealthInfo">
+        <id column="people_id" property="peopleId"/>
+        <id column="sleeping_hours_code" property="sleeping_hours_code"/>
+        <id column="sport_frequency_name" property="sportFrequencyName"/>
+        <id column="sleeping_situation_name" property="sleepingSituationName"/>
+        <id column="past_diseases" property="pastDiseases"/>
+        <id column="smoking_status_name" property="smokingStatusName"/>
+        <id column="drinking_status_name" property="drinking_status_name"/>
+        <id column="address" property="address"/>
+    </resultMap>
+
+    <resultMap id="extraField4" type="com.edu.nbu.cn.data.cleanout.model.ehr.HealthInfo">
+        <id column="people_id" property="peopleId"/>
+        <id column="respiratory_rate" property="respiratoryRate"/>
+    </resultMap>
+
     <update id="updateId" parameterType="com.edu.nbu.cn.data.cleanout.model.ehr.BasicHealthInfo">
         update health_record_basichealthinformation_df_enc2
         set id = #{id}
@@ -87,32 +114,56 @@
     </update>
 
     <update id="updateIdCardNo" parameterType="com.edu.nbu.cn.data.cleanout.model.ehr.BasicHealthInfo">
-    update health_record_basichealthinformation_df_enc2
+        update health_record_basichealthinformation_df_enc2
         set id_card_no = #{idCardNo}
         where people_id = #{peopleId}
-  </update>
+    </update>
 
     <update id="updatePhoneNumber" parameterType="com.edu.nbu.cn.data.cleanout.model.ehr.BasicHealthInfo">
         update health_record_basichealthinformation_df_enc2
-         set phone_number = #{phoneNumber}
+        set phone_number = #{phoneNumber}
         where people_id = #{peopleId}
     </update>
 
     <update id="updateExtraFields" parameterType="com.edu.nbu.cn.data.cleanout.model.ehr.HealthInfo">
         update health_record_basichealthinformation_df_enc2
-        set
-        abo_blood_type_name = #{aboBloodTypeName}
-            <!--   ,
-             rh_blood_type_name = #{rhBloodTypeName} ,
-             martial_status_name = #{martialStatusName},
-             fertility_status_name = #{fertilityStatusName},
-             family_diseases = #{familyDiseases},
-
-            diet_taste_list = #{dietTasteList}
-        -->
-
+        <set>
+            <if test="aboBloodTypeName != null and aboBloodTypeName != ''">abo_blood_type_name = #{aboBloodTypeName},</if>
+            <if test="rhBloodTypeName != null and rhBloodTypeName != ''">rh_blood_type_name = #{rhBloodTypeName},</if>
+            <if test="martialStatusName != null and martialStatusName != ''"> martial_status_name = #{martialStatusName},</if>
+            <if test="fertilityStatusName != null and fertilityStatusName != ''"> fertility_status_name = #{fertilityStatusName},</if>
+            <if test="familyDiseases != null and familyDiseases != ''"> family_diseases = #{familyDiseases},</if>
+            <if test="dietTasteList != null and dietTasteList != ''"> diet_taste_list = #{dietTasteList}</if>
+        </set>
         where people_id = #{peopleId}
     </update>
+
+    <select id="listExtraFieldByPeopleIds" resultMap="extraField0">
+        select people_id,abo_blood_type_name,rh_blood_type_name,martial_status_name,fertility_status_name,family_diseases,diet_taste_list
+        from health_record_basichealthinformation_df_enc2
+        where people_id in
+        <foreach  item="item" open="(" collection="peopleIds" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listExtraField2ByPeopleIds" resultMap="extraField2">
+        select people_id,sleeping_hours_code,sport_frequency_name,sleeping_situation_name,past_diseases,smoking_status_name,drinking_status_name,address
+        from health_record_basichealthinformation_df_enc2
+        where people_id in
+        <foreach  item="item" open="(" collection="peopleIds" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="listExtraField4ByPeopleIds" resultMap="extraField4">
+        select people_id,respiratory_rate
+        from health_record_basichealthinformation_df_enc2
+        where people_id in
+        <foreach  item="item" open="(" collection="peopleIds" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
 
     <update id="updateExtraFields4" parameterType="com.edu.nbu.cn.data.cleanout.model.ehr.HealthInfo">
         update health_record_basichealthinformation_df_enc2
@@ -121,24 +172,21 @@
         where people_id = #{peopleId}
     </update>
 
-    <update id="updateExtraFields2" parameterType="com.edu.nbu.cn.data.cleanout.model.ehr.HealthInfo2">
+    <update id="updateExtraFields2" parameterType="com.edu.nbu.cn.data.cleanout.model.ehr.HealthInfo">
         update health_record_basichealthinformation_df_enc2
-        set
-            sleeping_hours_code = #{sleeping_hours_code}
-
-            <!--
-            sport_frequency_name = #{sportFrequencyName}
-            sleeping_situation_name = #{sleepingSituationName}
-            past_diseases = #{pastDiseases}
-            smoking_status_name = #{smokingStatusName}
-            drinking_status_name = #{drinking_status_name}
-
-            address =#{address}
-            -->
+        <set>
+            <if test="sleeping_hours_code != null and sleeping_hours_code != ''">sleeping_hours_code = #{sleeping_hours_code},</if>
+            <if test="sportFrequencyName != null and sportFrequencyName != ''">sport_frequency_name = #{sportFrequencyName},</if>
+            <if test="sleepingSituationName != null and sleepingSituationName != ''">sleeping_situation_name = #{sleepingSituationName},</if>
+            <if test="pastDiseases != null and pastDiseases != ''">past_diseases = #{pastDiseases},</if>
+            <if test="smokingStatusName != null and smokingStatusName != ''">smoking_status_name = #{smokingStatusName},</if>
+            <if test="drinking_status_name != null and drinking_status_name != ''">drinking_status_name = #{drinking_status_name},</if>
+            <if test="address != null and address != ''">address = #{address}</if>
+        </set>
         where people_id = #{peopleId}
     </update>
 
-    <select id="search" resultMap="BaseResultMap">
+    <select id="searchSimpleHealthInfo" resultMap="BaseResultMap">
         select id,people_id,phone_number,id_card_no,name from health_record_basichealthinformation_df_enc2  order by id limit 5000 OFFSET 0
     </select>
 
@@ -149,7 +197,7 @@
                past_diseases,past_illness_is_normal,smoking_status_id,smoking_status_name,drinking_status_id,drinking_status_name,sleeping_hours_code,sleeping_hours_id,
                province_id,province_name,city_id,city_name,county_id,county_name,township_id,township_name,village_id,village_name,address
 
-               from health_record_basichealthinformation_df_enc2  order by id limit 5000 OFFSET 0
+        from health_record_basichealthinformation_df_enc2  order by id limit 5000 OFFSET 0
     </select>
 
     <update id="updateBloodFat" parameterType="com.edu.nbu.cn.data.cleanout.model.ehr.BloodFatInfo">

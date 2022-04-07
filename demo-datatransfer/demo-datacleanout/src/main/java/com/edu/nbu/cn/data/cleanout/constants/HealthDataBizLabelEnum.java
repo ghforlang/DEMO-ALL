@@ -1,3 +1,5 @@
+package com.edu.nbu.cn.data.cleanout.constants;
+
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 

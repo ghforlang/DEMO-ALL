@@ -1,4 +1,4 @@
-/*
+package com.edu.nbu.cn.data.cleanout.constants;/*
  * Copyright (c) 2001-2018 GuaHao.com Corporation Limited. All rights reserved.
  * This software is the confidential and proprietary information of GuaHao Company.
  * ("Confidential Information").
