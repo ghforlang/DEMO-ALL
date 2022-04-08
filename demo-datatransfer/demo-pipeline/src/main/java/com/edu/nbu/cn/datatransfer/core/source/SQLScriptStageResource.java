@@ -1,6 +1,9 @@
 package com.edu.nbu.cn.datatransfer.core.source;
 
+import com.edu.nbu.cn.datatransfer.core.source.scripts.SQLScript;
 import com.edu.nbu.cn.datatransfer.exception.IllegalNameException;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author laoshi . hua
@@ -10,33 +13,32 @@ import com.edu.nbu.cn.datatransfer.exception.IllegalNameException;
 public class SQLScriptStageResource extends ScriptStageResource {
     private static final  String file_suffix = ".sql";
 
-
-    private String originalSqlFileName;
-
-    public SQLScriptStageResource(String sourceName) {
-        super(sourceName);
-        if(!sourceName.endsWith(file_suffix)){
-            throw new IllegalNameException("illegal sql file name [" + sourceName + "]");
+    private String sourceName;
+    public SQLScriptStageResource(String sourceName, SQLScript...scripts) {
+        super(scripts);
+        this.sourceName = sourceName;
+        if(StringUtils.isBlank(sourceName)){
+            throw new IllegalNameException("illegal Resource name [" + sourceName + "]");
+        }
+        if(ArrayUtils.isEmpty(scripts)){
+            throw new IllegalArgumentException("illegal can not be null or empty !");
+        }
+        for(SQLScript script : scripts){
+            if(!script.filePath().endsWith(file_suffix)){
+                throw new IllegalNameException("illegal sql file name [" + script + "]");
+            }
         }
     }
-
-    public SQLScriptStageResource(String sourceName, String originalSqlFileName) {
-        super(sourceName);
-        if(!sourceName.endsWith(file_suffix)){
-            throw new IllegalNameException("illegal sql file name [" + sourceName + "]");
-        }
-        this.originalSqlFileName = originalSqlFileName;
-    }
-
-    public String getOriginalSqlFileName() {
-        return originalSqlFileName;
-    }
-
 
 
     @Override
     public String sourceName() {
         return sourceName;
+    }
+
+    @Override
+    public boolean hasResult() {
+        return false;
     }
 
     @Override

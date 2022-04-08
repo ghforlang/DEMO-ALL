@@ -5,6 +5,7 @@ import com.edu.nbu.cn.datatransfer.core.executor.InternalExecutorType;
 import com.edu.nbu.cn.datatransfer.core.source.DefaultStageResult;
 import com.edu.nbu.cn.datatransfer.core.source.SQLScriptStageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
+import com.edu.nbu.cn.datatransfer.core.source.scripts.SQLScript;
 import org.junit.Test;
 
 /**
@@ -14,16 +15,10 @@ import org.junit.Test;
  */
 public class TestSQLScriptExecutor extends BaseTest{
 
-    private static String absoluteSqlFilePath ;
-    private static final String sqlScriptSqlName = "people.sql";
-
-    static{
-        absoluteSqlFilePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-    }
-
     @Test
     public void testExecute(){
-        StageResource sqlStageResource = new SQLScriptStageResource("people.sql",absoluteSqlFilePath + sqlScriptSqlName);
+        SQLScript[] sqlScripts = new SQLScript[]{SQLScript.of("people.sql"),SQLScript.of("health_record_peopleatomicinfo_df_bak.sql")};
+        StageResource sqlStageResource = new SQLScriptStageResource("mutilSql",sqlScripts);
         ExecutorRegistry.getExecutor(InternalExecutorType.SQL_SCRIPT_EXECUTOR.getName()).execute(sqlStageResource, DefaultStageResult.of("success"));
     }
 }

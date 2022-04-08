@@ -11,6 +11,7 @@ import com.edu.nbu.cn.datatransfer.core.pipeline.Pipeline;
 import com.edu.nbu.cn.datatransfer.core.pipeline.Stage;
 import com.edu.nbu.cn.datatransfer.core.source.JARStageResource;
 import com.edu.nbu.cn.datatransfer.core.source.SQLScriptStageResource;
+import com.edu.nbu.cn.datatransfer.core.source.scripts.SQLScript;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,8 @@ public class TestPipeline extends BaseTest{
         sqlExecuteStage.setExecutor(ExecutorRegistry.getExecutor(InternalExecutorType.SQL_SCRIPT_EXECUTOR.getName()));
         sqlExecuteStage.setOrder(20);
         String sqlFileName = "people.sql";
-        SQLScriptStageResource stageResource = new SQLScriptStageResource(sqlFileName,Thread.currentThread().getContextClassLoader().getResource("").getPath() + sqlFileName);
+        SQLScript[] sqlScripts = new SQLScript[]{SQLScript.of(sqlFileName)};
+        SQLScriptStageResource stageResource = new SQLScriptStageResource("singleSql",sqlScripts);
         sqlExecuteStage.setStageResource(stageResource);
 
         DefaultStage jarExecuteStage = InternalStageType.JAR_FILE.getStage();

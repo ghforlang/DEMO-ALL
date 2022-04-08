@@ -5,6 +5,7 @@ import com.edu.nbu.cn.datatransfer.core.source.SQLScriptStageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResource;
 import com.edu.nbu.cn.datatransfer.core.source.StageResult;
 import com.edu.nbu.cn.datatransfer.core.mybatis.SQLScriptRunnerWrapper;
+import com.edu.nbu.cn.datatransfer.core.source.scripts.SQLScript;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -17,7 +18,6 @@ import java.io.IOException;
  */
 @Slf4j
 public class SQLScriptExecutor extends AbstractExecutor<String> {
-
 
     private SQLScriptRunnerWrapper sqlScriptRunnerWrapper;
 
@@ -48,14 +48,15 @@ public class SQLScriptExecutor extends AbstractExecutor<String> {
 
     private void commonExecute(StageResource stageResource){
         if(stageResource instanceof SQLScriptStageResource){
-            String sqlFileName = ((SQLScriptStageResource) stageResource).getOriginalSqlFileName();
-            try {
-                // 默认使用绝对路径
-                sqlScriptRunnerWrapper.executeSQLScript(new File(sqlFileName),true);
-                logger.debug("executing sqlScript [" + sqlFileName + "] success!");
-            } catch (IOException e) {
-                logger.error("executing sqlScript [" + sqlFileName + "] failed!");
-                e.printStackTrace();
+            SQLScript[] sqlScripts = (SQLScript[]) ((SQLScriptStageResource) stageResource).getScripts();
+            for(SQLScript script : sqlScripts){
+                try{
+                    sqlScriptRunnerWrapper.executeSQLScript(new File(script.filePath()),script.absolutePath());
+                    logger.debug("executing sqlScript [" + script.filePath() + "] success!");
+                } catch (IOException e) {
+                    logger.error("executing sqlScript [" + script.filePath() + "] failed!");
+                    e.printStackTrace();
+                }
             }
         }else{
             throw new UnsupportedOperationException("operation is not supported!");
