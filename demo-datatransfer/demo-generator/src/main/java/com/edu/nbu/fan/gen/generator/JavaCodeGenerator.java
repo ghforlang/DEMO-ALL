@@ -96,7 +96,9 @@ public class JavaCodeGenerator{
                 tableColumnFieldMap.putIfAbsent(tarTableName,new HashMap<>());
                 Map<String,String> tempMap = tableColumnFieldMap.get(tarTableName);
                 for(int i=0;i<tarColumnNames.length;i++){
-                    tempMap.put(StringUtils.remove(tarColumnNames[i],"\n"),StringUtils.remove(tarColumnValues[i],"\n"));
+                    String tempTarColumnName = StringUtils.remove(StringUtils.remove(tarColumnNames[i],"\n")," ");
+                    String tempTarColumnValue = StringUtils.remove(StringUtils.remove(tarColumnValues[i],"\n")," ");
+                    tempMap.put(tempTarColumnName,tempTarColumnValue);
                 }
             } catch (IOException e) {
                 log.warn("file " + filePathContext + tarTableName + sqlFieldFileSuffix + "not exists!");
@@ -110,6 +112,7 @@ public class JavaCodeGenerator{
     private POJOFieldMetaDataInfo buildFiledMetaData(ColumnMetaDataInfo columnData){
         POJOFieldMetaDataInfo fieldMetaDataInfo = new POJOFieldMetaDataInfo();
         fieldMetaDataInfo.setFieldName(TableNameParser.columnName2FieldName(columnData.getColumnName()));
+//        log.info("tableName: " + columnData.getTableName() + ",columnName: " + columnData.getColumnName() + ",jdbcType: " + columnData.getColumnJdbcType());
         fieldMetaDataInfo.setFieldType(TypeRegistry.getFieldTypeWrapper(columnData.getColumnJdbcType()).getType());
         fieldMetaDataInfo.setComments(columnData.getComments());
         return fieldMetaDataInfo;

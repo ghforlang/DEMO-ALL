@@ -19,36 +19,54 @@ public class PeopleAtomicInfoPO {
   /**
    * 主键
    */
-  @TransferColumn
+  @TransferColumn(
+      tarColumnName = "id",
+      tarColumnValue = ""
+  )
   private Long id;
 
   /**
    * 创建时间
    */
-  @TransferColumn
+  @TransferColumn(
+      tarColumnName = "gmt_created",
+      tarColumnValue = "created_time"
+  )
   private LocalDateTime gmtCreated;
 
   /**
    * 修改时间
    */
-  @TransferColumn
+  @TransferColumn(
+      tarColumnName = "gmt_modified",
+      tarColumnValue = "modified_time"
+  )
   private LocalDateTime gmtModified;
 
   /**
    * 自然人id
    */
-  @TransferColumn
+  @TransferColumn(
+      tarColumnName = "people_id",
+      tarColumnValue = "people_id"
+  )
   private Long peopleId;
 
   /**
    * 原子策略code
    */
-  @TransferColumn
+  @TransferColumn(
+      tarColumnName = "atomic_code",
+      tarColumnValue = "atomic_code"
+  )
   private String atomicCode;
 
   /**
    * 原子信息内容
    */
-  @TransferColumn
+  @TransferColumn(
+      tarColumnName = "atomic_value",
+      tarColumnValue = "atomic_value"
+  )
   private String atomicValue;
 }

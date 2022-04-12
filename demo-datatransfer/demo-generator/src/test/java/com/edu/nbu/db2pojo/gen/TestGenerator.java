@@ -24,6 +24,8 @@ public class TestGenerator extends BaseTest{
     @Autowired
     private SqlScriptGenerator sqlScriptGenerator;
 
+
+
     @Test
     public void testAllTableNames() throws SQLException {
         List<TableMetaDataInfo> columnMetaDataInfos = tableHandler.listTables();

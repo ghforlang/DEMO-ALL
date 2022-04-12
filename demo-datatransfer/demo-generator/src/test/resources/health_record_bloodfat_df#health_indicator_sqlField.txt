@@ -1,0 +1,2 @@
+id, people_id, source_unique_key, source, gmt_created, gmt_modified, gmt_deleted, is_deleted, biz_labels
+biz_id, people_id, source_unique_key, 'hc_0',  created_time, modified_time,'9999-12-31 23:59:59',is_deleted,2097152

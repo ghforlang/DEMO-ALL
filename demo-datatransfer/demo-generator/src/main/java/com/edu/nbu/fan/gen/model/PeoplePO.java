@@ -40,7 +40,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "gmt_modified",
-      tarColumnValue = ""
+      tarColumnValue = "NOW()"
   )
   private LocalDateTime gmtModified;
 
@@ -49,7 +49,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "biz_id",
-      tarColumnValue = ""
+      tarColumnValue = "bizid"
   )
   private Long bizId;
 
@@ -58,7 +58,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "name",
-      tarColumnValue = ""
+      tarColumnValue = "name"
   )
   private String name;
 
@@ -67,7 +67,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "gender",
-      tarColumnValue = ""
+      tarColumnValue = "gender"
   )
   private Integer gender;
 
@@ -76,7 +76,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "id_card_no",
-      tarColumnValue = ""
+      tarColumnValue = "idcardno"
   )
   private String idCardNo;
 
@@ -85,7 +85,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "household_register",
-      tarColumnValue = ""
+      tarColumnValue = "householdregister"
   )
   private String householdRegister;
 
@@ -94,7 +94,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "passport",
-      tarColumnValue = ""
+      tarColumnValue = "passport"
   )
   private String passport;
 
@@ -103,7 +103,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "military_license",
-      tarColumnValue = ""
+      tarColumnValue = "militarylicense"
   )
   private String militaryLicense;
 
@@ -121,7 +121,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "hk_and_mo_pass",
-      tarColumnValue = ""
+      tarColumnValue = "hkandmopass"
   )
   private String hkAndMoPass;
 
@@ -130,7 +130,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "taiwan_pass",
-      tarColumnValue = ""
+      tarColumnValue = "taiwanpass"
   )
   private String taiwanPass;
 
@@ -139,7 +139,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "home_return_permit",
-      tarColumnValue = ""
+      tarColumnValue = "homereturnpermit"
   )
   private String homeReturnPermit;
 
@@ -148,7 +148,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "other_card_no",
-      tarColumnValue = ""
+      tarColumnValue = "othercardno"
   )
   private String otherCardNo;
 
@@ -157,7 +157,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "phone_number",
-      tarColumnValue = ""
+      tarColumnValue = "phonenumber"
   )
   private String phoneNumber;
 
@@ -166,7 +166,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "email",
-      tarColumnValue = ""
+      tarColumnValue = "email"
   )
   private String email;
 
@@ -175,7 +175,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "date_of_birth",
-      tarColumnValue = ""
+      tarColumnValue = "STR_TO_DATE( dateofbirth , '%W %M %d %H:%i:%S CST %Y') AS date"
   )
   private LocalDateTime dateOfBirth;
 
@@ -184,7 +184,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "citizenship",
-      tarColumnValue = " '%W %M %d %H:%i:%S CST %Y') AS date"
+      tarColumnValue = "citizenship"
   )
   private String citizenship;
 
@@ -193,7 +193,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "nation",
-      tarColumnValue = ""
+      tarColumnValue = "nation"
   )
   private String nation;
 
@@ -202,7 +202,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "domicile",
-      tarColumnValue = ""
+      tarColumnValue = "domicile"
   )
   private Integer domicile;
 
@@ -211,7 +211,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "household_register_sign",
-      tarColumnValue = ""
+      tarColumnValue = "householdregistersign"
   )
   private Long householdRegisterSign;
 
@@ -220,7 +220,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "address",
-      tarColumnValue = ""
+      tarColumnValue = "address"
   )
   private String address;
 
@@ -229,7 +229,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "province_id",
-      tarColumnValue = ""
+      tarColumnValue = "provinceid"
   )
   private Integer provinceId;
 
@@ -238,7 +238,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "province",
-      tarColumnValue = ""
+      tarColumnValue = "province"
   )
   private String province;
 
@@ -247,7 +247,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "city_id",
-      tarColumnValue = ""
+      tarColumnValue = "cityid"
   )
   private Integer cityId;
 
@@ -256,7 +256,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "city",
-      tarColumnValue = ""
+      tarColumnValue = "city"
   )
   private String city;
 
@@ -265,7 +265,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "county_id",
-      tarColumnValue = ""
+      tarColumnValue = "countyid"
   )
   private Integer countyId;
 
@@ -274,7 +274,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "county",
-      tarColumnValue = " countyid"
+      tarColumnValue = "county"
   )
   private String county;
 
@@ -283,7 +283,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "township",
-      tarColumnValue = ""
+      tarColumnValue = "township"
   )
   private String township;
 
@@ -292,7 +292,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "village",
-      tarColumnValue = ""
+      tarColumnValue = "village"
   )
   private String village;
 
@@ -301,7 +301,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "doorplate",
-      tarColumnValue = ""
+      tarColumnValue = "doorplate"
   )
   private String doorplate;
 
@@ -310,7 +310,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "postal_code",
-      tarColumnValue = ""
+      tarColumnValue = "postalcode"
   )
   private String postalCode;
 
@@ -319,7 +319,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "birth_certificate",
-      tarColumnValue = ""
+      tarColumnValue = "birthcertificate"
   )
   private String birthCertificate;
 
@@ -328,7 +328,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "health_card_no",
-      tarColumnValue = ""
+      tarColumnValue = "healthcardno"
   )
   private String healthCardNo;
 
@@ -337,7 +337,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "outpatient_no",
-      tarColumnValue = ""
+      tarColumnValue = "outpatientno"
   )
   private String outpatientNo;
 
@@ -346,7 +346,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "inpatient_no",
-      tarColumnValue = ""
+      tarColumnValue = "inpatientno"
   )
   private String inpatientNo;
 
@@ -355,7 +355,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "mi_card",
-      tarColumnValue = " inpatientno"
+      tarColumnValue = "micard"
   )
   private String miCard;
 
@@ -364,7 +364,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "pip_mi_area_code",
-      tarColumnValue = ""
+      tarColumnValue = "pipmiareacode"
   )
   private String pipMiAreaCode;
 
@@ -373,7 +373,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "township_id",
-      tarColumnValue = ""
+      tarColumnValue = "townshipid"
   )
   private Integer townshipId;
 
@@ -382,7 +382,7 @@ public class PeoplePO {
    */
   @TransferColumn(
       tarColumnName = "village_id",
-      tarColumnValue = ""
+      tarColumnValue = "villageid"
   )
   private Integer villageId;
 }

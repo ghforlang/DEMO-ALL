@@ -86,6 +86,7 @@ public class TypeRegistry {
         jdbcType2FieldTypeMap.put(BOOLEAN,fieldTypeRegistryMap.get(Boolean.class) );
         jdbcType2FieldTypeMap.put(TIME_WITH_TIMEZONE, fieldTypeRegistryMap.get(LocalDateTime.class));
         jdbcType2FieldTypeMap.put(TIMESTAMP_WITH_TIMEZONE, fieldTypeRegistryMap.get(LocalDateTime.class));
+        jdbcType2FieldTypeMap.put(VARBINARY, fieldTypeRegistryMap.get(Long.class));
     }
 
 

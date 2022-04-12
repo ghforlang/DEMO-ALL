@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface TransferColumn {
     boolean transfer() default true;
-
+    String dateFormat() default "";
     String tarColumnValue() default "";
     String tarColumnName() default "";
 }

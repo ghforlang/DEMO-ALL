@@ -4,7 +4,7 @@ citizenship, nation, domicile, household_register_sign, address, province_id, pr
 county, township, village, doorplate, postal_code, birth_certificate, health_card_no, outpatient_no, inpatient_no,
 mi_card, pip_mi_area_code, township_id, village_id|
 NOW(), NOW(), bizid, name, gender, idcardno, householdregister, passport, militarylicense,
-drivinglicense, hkandmopass, taiwanpass, homereturnpermit, othercardno, phonenumber, email, STR_TO_DATE( dateofbirth , '%W %M %d %H:%i:%S CST %Y') AS date,
+drivinglicense, hkandmopass, taiwanpass, homereturnpermit, othercardno, phonenumber, email, dateofbirth,
 citizenship, nation, domicile,householdregistersign, address, provinceid, province, cityid, city, countyid,
 county, township, village, doorplate, postalcode, birthcertificate, healthcardno, outpatientno, inpatientno,
 micard, pipmiareacode, townshipid, villageid

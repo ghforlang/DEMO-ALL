@@ -1,0 +1,2 @@
+id, people_id, source_unique_key, source,  gmt_created, gmt_modified, gmt_deleted, is_deleted, name, age, gender, measure_time, hb_a1c, hb_a1c_status, label
+biz_id, people_id, biz_id, 'hc_0', created_time, modified_time, '9999-12-31 23:59:59', is_deleted, name, age, gender, measure_time, hb_a1c, hb_a1c_status, label

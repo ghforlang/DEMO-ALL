@@ -9,11 +9,11 @@ import lombok.Setter;
 
 @Transfer(
     sourceType = TableType.SOURCE,
-    tableName = "jnzxyy_health_record_people_20220217_new"
+    tableName = "health_record_people_df"
 )
 @Getter
 @Setter
-public class JnzxyyHealthRecordPeople20220217NewPO {
+public class HealthRecordPeopleDfPO {
   @TransferColumn
   private String id;
 
