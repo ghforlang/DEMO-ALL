@@ -1,0 +1,10 @@
+gmt_created, gmt_modified, biz_id, name, gender, id_card_no, household_register, passport, military_license,
+driving_license, hk_and_mo_pass, taiwan_pass, home_return_permit, other_card_no, phone_number, email, date_of_birth,
+citizenship, nation, domicile, household_register_sign, address, province_id, province, city_id, city, county_id,
+county, township, village, doorplate, postal_code, birth_certificate, health_card_no, outpatient_no, inpatient_no,
+mi_card, pip_mi_area_code, township_id, village_id|
+NOW(), NOW(), bizid, name, gender, idcardno, householdregister, passport, militarylicense,
+drivinglicense, hkandmopass, taiwanpass, homereturnpermit, othercardno, phonenumber, email, STR_TO_DATE( dateofbirth , '%W %M %d %H:%i:%S CST %Y') AS date,
+citizenship, nation, domicile,householdregistersign, address, provinceid, province, cityid, city, countyid,
+county, township, village, doorplate, postalcode, birthcertificate, healthcardno, outpatientno, inpatientno,
+micard, pipmiareacode, townshipid, villageid

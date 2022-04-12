@@ -17,7 +17,7 @@ public class TestSQLScriptExecutor extends BaseTest{
 
     @Test
     public void testExecute(){
-        SQLScript[] sqlScripts = new SQLScript[]{SQLScript.of("people.sql"),SQLScript.of("health_record_peopleatomicinfo_df_bak.sql")};
+        SQLScript[] sqlScripts = new SQLScript[]{SQLScript.of("people.sql"),SQLScript.of("health_record_peopleatomicinfo_df.sql")};
         StageResource sqlStageResource = new SQLScriptStageResource("mutilSql",sqlScripts);
         ExecutorRegistry.getExecutor(InternalExecutorType.SQL_SCRIPT_EXECUTOR.getName()).execute(sqlStageResource, DefaultStageResult.of("success"));
     }

@@ -1,0 +1,2 @@
+id,people_id,source,source_unique_key,gmt_created,gmt_modified,gmt_deleted,is_deleted|
+id,people_id,source,source_unique_key,NOW(),NOW(),gmt_deleted,0

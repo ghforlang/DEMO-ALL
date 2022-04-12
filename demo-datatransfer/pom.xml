@@ -17,7 +17,7 @@
     <modules>
         <module>demo-datacleanout</module>
         <module>demo-pipeline</module>
-        <module>demo-db2pojo</module>
+        <module>demo-generator</module>
     </modules>
 
     <dependencyManagement>

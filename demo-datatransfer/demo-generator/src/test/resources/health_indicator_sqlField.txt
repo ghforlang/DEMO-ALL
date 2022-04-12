@@ -1,0 +1,12 @@
+id,gmt_created,gmt_modified,gmt_deleted,is_deleted,people_id,
+source_unique_key,source,device_model,bluetooth_addr,device_serial,measure_address,
+measure_longitude,measure_latitude,temperature,temperature_status,respiratory_rate,respiratory_rate_status,blood_pressure_measure_time_label,systolic_pressure,systolic_pressure_status,
+diastolic_pressure,diastolic_pressure_status,pulse_rate,pulse_rate_status,heart_rate,height,weight,
+body_mass_index,body_mass_index_status,measure_time_label,blood_sugar,blood_sugar_status,
+oxygen_saturation,oxygen_saturation_status,waist,body_fat,body_fat_rate,biz_labels|
+biz_id,created_time,modified_time,'9999-12-31 23:59:59',is_deleted,people_id,
+CONCAT('hc_0','#',biz_id),'hc_0',device_model,bluetooth_addr,device_serial,measure_address,
+measure_longitude,measure_latitude,temperature,temperature_status,respiratory_rate,respiratory_rate_status,blood_pressure_measure_time_label,systolic_pressure,systolic_pressure_status,
+diastolic_pressure,diastolic_pressure_status,pulse_rate,pulserate_status,heart_rate,height,weight,
+body_mass_index,body_mass_index_status,measure_time_label,blood_sugar,blood_sugar_status,
+oxygen_saturation,oxygen_saturation_status,waist,bodyfat,bodyfat_rate,biz_labels_data

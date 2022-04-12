@@ -1,0 +1,11 @@
+id,people_id,source,source_unique_key,name,phone_number,date_of_birth,id_card_no,
+weight,abo_blood_type,occupation,height,rh_blood_type,is_vaccinated,education_level,last_menstrual_period,
+urine_conditions,martial_status,expected_date_of_childbirth,company,gender,menarche,age_of_menarche,is_pregnant,
+emergency_contact_person_phone,fertility_status,emergency_contact_person,guardian_phone,
+guardian,diet_taste,drinking_situation,family_history,
+gmt_created,gmt_modified,gmt_deleted,is_deleted|id,people_id,source,source_unique_key,name,enc_phone_number,date_of_birth,enc_id_card_no,
+weight,abo_blood_type_name,occupation,height,rh_blood_type_name,is_vaccinated,education_level_name,last_menstrual_period,
+urine_conditions,martial_status_name,expected_date_of_childbirth,company,gender,menarche,age_of_menarche,is_pregnant,
+emergency_contact_person_phone,fertility_status_name,emergency_contact_person,guardian_phone,
+guardian,diet_taste_list,drinking_situation,family_diseases,
+NOW(),NOW(),gmt_deleted,0

@@ -1,5 +1,11 @@
 package com.edu.nbu.cn.datatransfer.core.source.scripts;
 
+import org.apache.ibatis.jdbc.SQL;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author laoshi . hua
  * @version 1.0 2022/4/8-4:20 PM
@@ -38,5 +44,13 @@ public class SQLScript implements Script{
 
     public static SQLScript of(String fileName){
         return new SQLScript(fileName);
+    }
+
+    public static SQLScript[] of(String ... scriptNames){
+        List<SQLScript> scripts = new ArrayList<>();
+        for(String scriptName : scriptNames){
+            scripts.add(of(scriptName));
+        }
+        return scripts.toArray(new SQLScript[]{});
     }
 }

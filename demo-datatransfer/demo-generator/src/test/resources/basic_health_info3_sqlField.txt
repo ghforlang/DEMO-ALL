@@ -1,0 +1,14 @@
+breakfast,lunch,dinner,is_snacks,id_card_type,
+age,citizenship,nation,
+temperature,systolic_pressure,diastolic_pressure,body_mass_index,oxygen_saturation,
+blood_glucose,personal_history,exposure_history_of_occupational_disease_hazards,
+job_description,working_age,protective_measures,occupational_hazard_factor_category_code,protective_measures_status,
+drinking_remark,email,menopause,sport_remark,
+id,people_id,source,source_unique_key,gmt_created,gmt_modified,gmt_deleted,is_deleted|
+breakfast,lunch,dinner,is_snacks,id_card_type,
+age,citizenship,nation,
+temperature,systolic_pressure,diastolic_pressure,body_mass_index,oxygen_saturation,
+blood_glucose,personal_history,exposure_history_of_occupational_disease_hazards,
+job_description,working_age,protective_measures,occupational_hazard_factor_category_code,protective_measures_status,
+drinking_remark,email,menopause,sport_remark,
+id,people_id,source,source_unique_key,NOW(),NOW(),gmt_deleted,0

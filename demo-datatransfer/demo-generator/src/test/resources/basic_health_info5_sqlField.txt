@@ -1,0 +1,4 @@
+toilet_category,livestock_bar_category,exposure_history,blood_transfusion_history,
+id,people_id,source,source_unique_key,gmt_created,gmt_modified,gmt_deleted,is_deleted|
+toilet_category,livestock_bar_category,exposure_history,blood_transfusion_history,
+id,people_id,source,source_unique_key,NOW(),NOW(),gmt_deleted,0

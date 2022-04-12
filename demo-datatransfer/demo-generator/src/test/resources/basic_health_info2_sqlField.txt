@@ -1,0 +1,11 @@
+is_snoring,appetite_condition,sleeping_patterns,sport_frequency,sleeping_situation,past_illness,sleeping_problem,
+smoking_status,medication_situation,drinking_status,smoking_time_length,sleeping_hours,
+drinking_time_length,family_composition,permanent_addr,emergency_contact_relationship,
+waistline,sport_duration,sport_time_length,sport_venue,water_intake,water_drinking_category,
+id,people_id,source,source_unique_key,
+gmt_created,gmt_modified,gmt_deleted,is_deleted|is_snoring,appetite_condition,sleeping_patterns,sport_frequency_name,sleeping_situation_name,past_diseases,sleeping_problem,
+smoking_status_name,medication_situation,drinking_status_name,smoking_time_length,sleeping_hours_code,
+drinking_time_length,family_composition,address,emergency_contact_relationship,
+waistline,sport_duration,sport_time_length,sport_venue,water_intake,water_drinking_category,
+id,people_id,source,source_unique_key,
+NOW(),NOW(),gmt_deleted,0
