@@ -7,4 +7,7 @@ mac server端安装
 chmod +x minio
 MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password ./minio server F:\Data --console-address ":9001" ## F:\Data 存储目录；--console-address 是 UI 界面的端口,
 文件所在路径改为自己的真实路径，用户名密码可自定义`
-服务启动后，可访问127.0.0.0:9001访问控制台，进行操作
+minio服务启动后，可访问127.0.0.0:9001访问控制台，进行操作；也可直接通过接口访问
+
+
+### 新增swagger的引入和使用
