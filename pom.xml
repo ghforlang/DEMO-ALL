@@ -35,6 +35,7 @@
         <module>demo-spel</module>
         <module>demo-descriptor</module>
         <module>demo-datatransfer</module>
+        <module>demo-minio</module>
     </modules>
 
     <properties>
@@ -165,11 +166,6 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
                 <version>4.3.25.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-transaction</artifactId>
-                <version>3.1.1.RELEASE</version>
             </dependency>
 
             <dependency>
