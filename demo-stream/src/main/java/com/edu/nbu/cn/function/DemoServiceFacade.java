@@ -13,7 +13,7 @@ import java.util.function.Function;
  * @since 1.0
  */
 
-public class DemoService {
+public class DemoServiceFacade {
     private static DemoServiceExecutor serviceExecutor = new DemoServiceExecutor();
 
     static{

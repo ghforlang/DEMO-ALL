@@ -8,6 +8,10 @@
     <bean id = "aDemoService" class = "com.edu.nbu.cn.spring.bean.ADemoService"/>
 
     <bean id = "bDemoService" class="com.edu.nbu.cn.spring.bean.BDemoService"/>
+    <bean id = "aBizService" class="com.edu.nbu.cn.spring.bean.ABizService"/>
+    <bean id = "bBizService" class="com.edu.nbu.cn.spring.bean.BBizService"/>
 
+    <bean id="functionBeanRegisterPostProcessorRegistrar" class="com.edu.nbu.cn.spring.function.core.FunctionBeanRegisterPostProcessorRegistrar"/>
+    <bean id="functionBeanRegisterPostProcessor" class="com.edu.nbu.cn.spring.function.core.FunctionBeanRegisterPostProcessor"/>
 
 </beans>

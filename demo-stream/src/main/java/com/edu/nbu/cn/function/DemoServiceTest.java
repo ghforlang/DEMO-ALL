@@ -1,6 +1,5 @@
-package com.edu.nbu.cn.test;
+package com.edu.nbu.cn.function;
 
-import com.edu.nbu.cn.function.DemoService;
 import com.edu.nbu.cn.function.base.Param;
 import com.edu.nbu.cn.function.base.Response;
 
@@ -10,11 +9,11 @@ import com.edu.nbu.cn.function.base.Response;
  * @since 1.0
  */
 public class DemoServiceTest {
-    private static DemoService demoService = new DemoService();
+    private static DemoServiceFacade demoServiceFacade = new DemoServiceFacade();
 
     public static void main(String[] args) {
-        String result = demoService.simpleDemoDeal("test1");
-        Response response = demoService.demoDeal(new Param() {
+        String result = demoServiceFacade.simpleDemoDeal("test1");
+        Response response = demoServiceFacade.demoDeal(new Param() {
             @Override
             public String resource() {
                 return "one";
