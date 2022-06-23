@@ -1,5 +1,6 @@
-package com.edu.nbu.cn.spring.registrar;
+package com.edu.nbu.cn.spring;
 
+import com.edu.nbu.cn.spring.registrar.Configuration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

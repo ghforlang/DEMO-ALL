@@ -1,9 +1,10 @@
 package com.edu.nbu.cn.spring.function.core;
 
-import com.edu.nbu.cn.spring.function.FactoryHolder;
-import com.edu.nbu.cn.spring.function.FunctionFactory;
-import com.edu.nbu.cn.spring.function.anno.FunctionBean;
-import com.edu.nbu.cn.spring.function.anno.FunctionMethod;
+import com.edu.nbu.cn.spring.factory.FactoryHolder;
+import com.edu.nbu.cn.spring.factory.FunctionFactory;
+import com.edu.nbu.cn.spring.function.core.anno.FunctionBean;
+import com.edu.nbu.cn.spring.function.core.anno.FunctionInterface;
+import com.edu.nbu.cn.spring.function.core.anno.FunctionMethod;
 import com.edu.nbu.cn.spring.function.core.meta.FunctionMethodMetaData;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanCreationException;
@@ -76,7 +77,23 @@ public class FunctionBeanRegisterPostProcessor implements BeanPostProcessor,
 
     private void processBeforeInitialization(Object bean, String beanName){
         Object target = bean;
-        FunctionFactory factory = FactoryHolder.factory();
+        FunctionFactory factory = FactoryHolder.getInstance().get();
+
+        Class<?>[] beanParents = bean.getClass().getInterfaces();
+        boolean functionBean = false;
+        Class<?> functionParent = null;
+        for(Class<?> parent : beanParents){
+            if(parent.isAnnotationPresent(FunctionInterface.class)){
+                functionBean = true;
+                functionParent = parent;
+                break;
+            }
+        }
+
+        if(!functionBean){
+            System.out.println("not a functionBean!");
+            return;
+        }
 
         Class<?> beanClazz = target.getClass();
         Set<Method> candidateMethods = new HashSet<>();
@@ -85,7 +102,6 @@ public class FunctionBeanRegisterPostProcessor implements BeanPostProcessor,
                 candidateMethods.add(method);
             }
         }
-
 
         if(CollectionUtils.isEmpty(candidateMethods)){
             return;
@@ -96,9 +112,9 @@ public class FunctionBeanRegisterPostProcessor implements BeanPostProcessor,
         candidateMethods.forEach(method -> methodMetaDataList.add(buildMethodMetaData(method,target,beanName)));
 
         //register function
-        methodMetaDataList.forEach(methodMetaData ->{
-            factory.register(methodMetaData.getIdentifier(),methodMetaData.getFunction());
-        });
+        for (FunctionMethodMetaData methodMetaData : methodMetaDataList) {
+            factory.register(functionParent,methodMetaData.getIdentifier(),methodMetaData.getFunction());
+        }
     }
 
     private FunctionMethodMetaData buildMethodMetaData(Method method,Object bean, String beanName){

@@ -1,8 +1,9 @@
 package com.edu.nbu.cn.spring.bean;
 
+import com.edu.nbu.cn.spring.bean.function.ABizService;
+import com.edu.nbu.cn.spring.bean.function.BBizService;
 import com.edu.nbu.cn.spring.function.AbstractFunctionBeanHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * @author laoshi . hua
@@ -23,7 +24,7 @@ public class ServiceHelper extends AbstractFunctionBeanHandler {
     }
 
     public void registerABizFunction(){
-        factory.register(aBizService.getIdentifier(),param -> aBizService.demoService(""));
-        factory.register(aBizService.getIdentifier(),param -> bBizService.demoService(""));
+//        factory.register(aBizService.getClass(),aBizService.getIdentifier(),param -> aBizService.demoService(""));
+//        factory.register(bBizService.getClass(),bBizService.getIdentifier(),param -> bBizService.demoService(""));
     }
 }

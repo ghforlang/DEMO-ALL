@@ -1,6 +1,6 @@
-package com.edu.nbu.cn.spring.bean;
+package com.edu.nbu.cn.spring;
 
-import com.edu.nbu.cn.spring.function.FactoryHolder;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -13,8 +13,6 @@ public class SpringApplication {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/spring-beans.xml");
-        context.getBean("functionBeanRegisterPostProcessorRegistrar");
-        context.getBean("functionBeanRegisterPostProcessor");
 //        BDemoService bDemoService = (BDemoService) context.getBean("bDemoService");
 //        bDemoService.sayHello();
 //
@@ -23,7 +21,7 @@ public class SpringApplication {
 //
 //        BDemoService bDemoService1 = (BDemoService) context.getBean("bDemoService");
 //        bDemoService1.sayHello();
-        System.out.println(FactoryHolder.factory().get("a").apply("aa"));
-        System.out.println(FactoryHolder.factory().get("b").apply("bb"));
+
+
     }
 }
