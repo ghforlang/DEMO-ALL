@@ -15,7 +15,7 @@ public class TestBeanFunction {
         AnnotationConfigApplicationContext acac = new AnnotationConfigApplicationContext("com.edu.nbu.cn.spring");
 //        AnnotationConfigApplicationContext acac = new AnnotationConfigApplicationContext(FunctionBeanConfiguration.class);
         FunctionFactory factory = FactoryHolder.getInstance().get();
-        factory.get(DemoExecutor.class,"a").apply("function-a");
-        factory.get(DemoExecutor.class,"b").apply("function-a");
+        factory.get(DemoExecutor.class).apply("a");
+        factory.get(DemoExecutor.class).apply("b");
     }
 }

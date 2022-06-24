@@ -1,7 +1,7 @@
 package com.edu.nbu.cn.spring.factory;
 
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
+import com.edu.nbu.cn.spring.function.SelectableFunction;
+import com.edu.nbu.cn.spring.function.core.identifier.IdentifierHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,27 +14,29 @@ import java.util.function.Function;
  * @since 1.0
  */
 
-public class FunctionFactory<S,T> {
+public class FunctionFactory<R> {
     private Map<String,FunctionRegistry> registryMap = new HashMap<>();
 
-    public void register(Class<?> serviceClass,Object identifier, Function<S,T> function){
+    public void register(Class<?> serviceClass,String identifier, Function<String,R> function){
         registryMap.putIfAbsent(serviceClass.getName(), FunctionRegistry.newInstance());
-        registryMap.get(serviceClass.getName()).registerFunction(identifier,function);
+        registryMap.get(serviceClass.getName()).registerFunction(IdentifierHelper.globalIdentifier(serviceClass,identifier),function);
     }
 
-    public Function<S,T> get(Class<?> serviceClass,Object identifier){
-        if(Objects.isNull(registryMap.get(serviceClass.getName()))){
+    public SelectableFunction<R> get(Class<?> executorClass){
+        if(Objects.isNull(registryMap.get(executorClass.getName()))){
 //            LOGGER.warn("interface{} has no registry available");
             return null;
         }
-        if(Objects.isNull(registryMap.get(serviceClass.getName()).fetchFunction(identifier))){
-            throw new RuntimeException("invalid functionRegistry!");
-        }
-        return registryMap.get(serviceClass.getName()).fetchFunction(identifier);
+        return new SelectableFunction<R>(executorClass,registryMap.get(executorClass.getName()).getFunctionCache());
     }
 
-    static class FunctionRegistry<S,T>{
-        private Map<Object,Function<S,T>> functionCache = new HashMap<>();
+    static class FunctionRegistry<R>{
+
+        public Map<String, Function<String, R>> getFunctionCache() {
+            return functionCache;
+        }
+
+        private Map<String, Function<String,R>> functionCache = new HashMap<>();
         private  FunctionRegistry() {
         }
 
@@ -42,11 +44,11 @@ public class FunctionFactory<S,T> {
             return new FunctionRegistry<>();
         }
 
-        private  void registerFunction(Object identifier,Function<S,T> function){
+        private  void registerFunction(String identifier,Function<String,R> function){
             functionCache.putIfAbsent(identifier,function);
         }
 
-        private Function<S,T> fetchFunction(Object identifier){
+        private Function<String,R> fetchFunction(String identifier){
             return functionCache.get(identifier);
         }
     }
