@@ -36,6 +36,8 @@
         <module>demo-descriptor</module>
         <module>demo-datatransfer</module>
         <module>demo-minio</module>
+        <module>demo-javaagent</module>
+        <module>demo-vault</module>
     </modules>
 
     <properties>
@@ -169,6 +171,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>4.3.25.RELEASE</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.github.ben-manes.caffeine</groupId>
                 <artifactId>caffeine</artifactId>
                 <version>2.5.6</version>
@@ -214,6 +222,12 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>9.4.1212.jre7</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>1.5.14.RELEASE</version>
             </dependency>
 
         </dependencies>
