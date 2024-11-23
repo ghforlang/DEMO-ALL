@@ -1,0 +1,44 @@
+/Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home\bin\javap -c -l -p -s -constants -verbose com.edu.nbu.cn.generic.model.ListWrapper
+Classfile /Users/fanwenhao/my-projects/DEMO-ALL/demo-reflection/target/classes/com/edu/nbu/cn/generic/model/ListWrapper.class
+  Last modified 2023-5-25; size 435 bytes
+  MD5 checksum ebb7b0287fa62741b0721e2ded5a5c49
+  Compiled from "ListWrapper.java"
+public class com.edu.nbu.cn.generic.model.ListWrapper extends com.edu.nbu.cn.generic.model.Wrapper<java.util.List<java.lang.String>>
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #3.#15         // com/edu/nbu/cn/generic/model/Wrapper."<init>":()V
+   #2 = Class              #16            // com/edu/nbu/cn/generic/model/ListWrapper
+   #3 = Class              #17            // com/edu/nbu/cn/generic/model/Wrapper
+   #4 = Utf8               <init>
+   #5 = Utf8               ()V
+   #6 = Utf8               Code
+   #7 = Utf8               LineNumberTable
+   #8 = Utf8               LocalVariableTable
+   #9 = Utf8               this
+  #10 = Utf8               Lcom/edu/nbu/cn/generic/model/ListWrapper;
+  #11 = Utf8               Signature
+  #12 = Utf8               Lcom/edu/nbu/cn/generic/model/Wrapper<Ljava/util/List<Ljava/lang/String;>;>;
+  #13 = Utf8               SourceFile
+  #14 = Utf8               ListWrapper.java
+  #15 = NameAndType        #4:#5          // "<init>":()V
+  #16 = Utf8               com/edu/nbu/cn/generic/model/ListWrapper
+  #17 = Utf8               com/edu/nbu/cn/generic/model/Wrapper
+{
+  public com.edu.nbu.cn.generic.model.ListWrapper();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method com/edu/nbu/cn/generic/model/Wrapper."<init>":()V
+         4: return
+      LineNumberTable:
+        line 10: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/edu/nbu/cn/generic/model/ListWrapper;
+}
+Signature: #12                          // Lcom/edu/nbu/cn/generic/model/Wrapper<Ljava/util/List<Ljava/lang/String;>;>;
+SourceFile: "ListWrapper.java"

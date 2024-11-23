@@ -22,13 +22,14 @@ public class ForbidWriteInterceptor implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         PreparedStatement ps = (PreparedStatement)invocation.getArgs()[0];
         if(Objects.nonNull(ps)){
-            String rawSql = ps.toString();
-            int updateIndex = rawSql.indexOf("update") == -1 ? rawSql.indexOf("insert") : -1;
-            // 非更新语句，直接执行
-            if(updateIndex == -1 ){
-                return invocation.proceed();
-            }
-            rawSql = rawSql.substring(updateIndex);
+            String rawSql = ps.getConnection().getMetaData().getURL();
+//            String rawSql = ps.toString();
+//            int updateIndex = rawSql.indexOf("update") == -1 ? rawSql.indexOf("insert") : -1;
+//            // 非更新语句，直接执行
+//            if(updateIndex == -1 ){
+//                return invocation.proceed();
+//            }
+//            rawSql = rawSql.substring(updateIndex);
             LOGGER.info("row sql : " + rawSql);
         }
         return 1;

@@ -1,6 +1,6 @@
 package com.edu.nbu.cn.function;
 
-import com.edu.nbu.cn.constants.ResourceTypeEnum;
+import com.edu.nbu.cn.synctask.constants.ResourceTypeEnum;
 import com.edu.nbu.cn.function.base.Param;
 import com.edu.nbu.cn.function.base.Response;
 

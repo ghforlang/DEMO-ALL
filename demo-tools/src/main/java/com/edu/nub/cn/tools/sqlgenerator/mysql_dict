@@ -1,0 +1,11 @@
+建表要求：
+1、需标明使用mysql Innodb引擎，编码采用utf8mb4,表注释：测试表
+2、表名 test ,须包含以下基础字段
+pk_id (bigint,主键,自增，注释 自增id),
+id (bigint,不为空，无默认值，注释 业务id),
+gmt_created(timestamp,不为空，无默认值，注释创建时间)
+gmt_modified(timestamp,不为空，无默认值，注释更新时间)
+gmt_deleted(timestamp,不为空，默认值 '9999-12-30 00:00:00',注释删除时间)
+is_deleted(tinyint(1),不为空，默认值 0，注释 逻辑删除时间,0-未删除,1-已删除)
+3、索引字段 id，gmt_created,gmt_modified三个索引
+4、其他字段 salary_date,

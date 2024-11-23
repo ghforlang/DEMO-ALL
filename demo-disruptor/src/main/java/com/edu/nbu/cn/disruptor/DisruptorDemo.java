@@ -5,6 +5,7 @@ import com.lmax.disruptor.BusySpinWaitStrategy;
 import com.lmax.disruptor.LiteBlockingWaitStrategy;
 import com.lmax.disruptor.LiteTimeoutBlockingWaitStrategy;
 import com.lmax.disruptor.PhasedBackoffWaitStrategy;
+import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.SleepingWaitStrategy;
 import com.lmax.disruptor.TimeoutBlockingWaitStrategy;
 import com.lmax.disruptor.WaitStrategy;
@@ -36,5 +37,21 @@ public class DisruptorDemo {
 
     public static void main(String[] args) {
 
+    }
+
+    /**
+     * dirruptor使用demo
+     */
+    public void dirruptorDemo() {
+        disruptor.handleEventsWith(new StringEventHandler());
+        disruptor.start();
+        RingBuffer<StringEvent> ringBuffer = disruptor.getRingBuffer();
+        long seq = ringBuffer.next();
+        try {
+            ringBuffer.get(seq).setValue("hello disruptor");
+        } finally {
+            ringBuffer.publish(seq);
+        }
+        disruptor.shutdown();
     }
 }

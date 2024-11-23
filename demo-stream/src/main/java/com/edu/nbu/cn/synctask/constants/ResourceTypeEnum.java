@@ -1,4 +1,4 @@
-package com.edu.nbu.cn.constants;
+package com.edu.nbu.cn.synctask.constants;
 
 import lombok.Getter;
 

@@ -1,0 +1,344 @@
+{
+	"count": 705536,
+	"status": 0,
+	"code": 0,
+	"totalTime": 184.3469142914,
+	"ab_test": {
+		"ab_type": 0,
+		"scene": null
+	},
+	"docs": [{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 0,
+				"doctor_name": "张义",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "125618865453990000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": null,
+				"device_id": ""
+			},
+			"doctor_name": "张义",
+			"doctor_user_id": "5141626",
+			"virtual_hospital_department_detail": [
+				"N81829474722|乌镇微医互联网医院|553ca960-3af5-41f0-af94-52a028663b44000|神经外科|7f67bf44-cff3-11e1-831f-5cf9dd2e7135|神经外科|0|100||0",
+				"N81611522916|天津和平微医互联网医院|9d1d6f01-aabe-4a14-8074-70b81e8910e8000|神经内科|7f67994c-cff3-11e1-831f-5cf9dd2e7135|神经内科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "125618865453990000",
+			"hospital_department_detail": [
+				"125336754304601000|复旦大学附属华山医院|125617817919923000|神经外科|7f67bf44-cff3-11e1-831f-5cf9dd2e7135|神经外科|0|100||0|上海|2|三级甲等|0|静安区|3309|1|4341d586-66a9-43d2-98c2-70ce1c98d2bd000@61410|7f67b77e-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"cf460b90-30e0-4894-8dfc-1f6d1cf6b36d000|复旦大学附属华山医院虹桥院区|4aaad20d-dbec-467c-beb6-eb5c5ef00b3b000|神经外科|7f67bf44-cff3-11e1-831f-5cf9dd2e7135|神经外科|0|100||0|上海|2|三级甲等|1|静安区|3309|1|4341d586-66a9-43d2-98c2-70ce1c98d2bd000@61410|7f67b77e-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院"
+			]
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 1,
+				"doctor_name": "杨勤萍",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "96add7e2-c720-11e1-913c-5cf9dd2e7135000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": 0,
+				"device_id": ""
+			},
+			"doctor_name": "杨勤萍",
+			"doctor_user_id": "53547415",
+			"virtual_hospital_department_detail": [
+				"N81829474722|乌镇微医互联网医院|310191d7-589d-400c-9adc-07055defca70000|皮肤科|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|皮肤性病科|0|100||0",
+				"N81819594432|上海微医医院互联网医院|8e770ff0-39a7-475d-9dab-e2824ba07b30000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "96add7e2-c720-11e1-913c-5cf9dd2e7135000",
+			"hospital_department_detail": [
+				"125336754304601000|复旦大学附属华山医院|125617797246614000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|0|静安区|3309|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"98683f53-c720-11e1-913c-5cf9dd2e7135000|复旦大学附属华山医院宝山分院|97cb87dc-c720-11e1-913c-5cf9dd2e7135000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|二级乙等|0|宝山区|3317|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|",
+				"986c5ed4-c720-11e1-913c-5cf9dd2e7135000|复旦大学附属华山医院静安分院|97be7e4c-c720-11e1-913c-5cf9dd2e7135000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级乙等|2|静安区|3309|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|"
+			],
+			"live_consult_online": 0
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 2,
+				"doctor_name": "李锋",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "fc7a1580-0eb3-42b2-94be-b2875f9a090f000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": 0,
+				"device_id": ""
+			},
+			"doctor_name": "李锋",
+			"doctor_user_id": "22576226",
+			"virtual_hospital_department_detail": [
+				"N81829474722|乌镇微医互联网医院|310191d7-589d-400c-9adc-07055defca70000|皮肤科|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|皮肤性病科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "fc7a1580-0eb3-42b2-94be-b2875f9a090f000",
+			"hospital_department_detail": [
+				"125336754304601000|复旦大学附属华山医院|125617797246614000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|0|静安区|3309|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"fb60b555-d22d-4229-b79c-ce9e96c82863000|复旦大学附属华山医院浦东院区|6394c2f9-468e-46cf-b42f-629a901bb98d000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|0|浦东新区|3311|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"DD5E1CC4E11B1016E0400A0AC8642080000|上海华山医院宝山院区（原华山北院）|DD5E1CC4E1251016E0400A0AC8642080000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|1|宝山区|3317|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"cf460b90-30e0-4894-8dfc-1f6d1cf6b36d000|复旦大学附属华山医院虹桥院区|f0c1dfb8-dac2-47a7-8f8c-18f28499878c000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|2|静安区|3309|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院"
+			],
+			"live_consult_online": 0
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 3,
+				"doctor_name": "唐慧",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "2164b066-498f-41f9-8060-6e7b75e42db9000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": null,
+				"device_id": ""
+			},
+			"doctor_name": "唐慧",
+			"doctor_user_id": "50533125",
+			"virtual_hospital_department_detail": [
+				"N81829474722|乌镇微医互联网医院|310191d7-589d-400c-9adc-07055defca70000|皮肤科|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|皮肤性病科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "2164b066-498f-41f9-8060-6e7b75e42db9000",
+			"hospital_department_detail": [
+				"125336754304601000|复旦大学附属华山医院|125617797246614000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|1|静安区|3309|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"fb60b555-d22d-4229-b79c-ce9e96c82863000|复旦大学附属华山医院浦东院区|6394c2f9-468e-46cf-b42f-629a901bb98d000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|3|浦东新区|3311|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"e0d5ca31-c45d-4e45-a5a7-82dea9327aeb000|复旦大学附属上海市第五人民医院|f0bcc9c9-9d13-4b88-9c20-191c7aaa4355000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级乙等|4|闵行区|3314|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|",
+				"6994072d-6444-4eca-a6ea-cd8909f8119a000|上海国际医学中心|1d5039b1-ba5a-4307-8072-9b045aae642d000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|对外综合|5|浦东新区|3311|2|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|"
+			]
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 4,
+				"doctor_name": "邱伟华",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "698c6a85-fcd1-4c4d-a5db-3b5517066df6000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": null,
+				"device_id": ""
+			},
+			"doctor_name": "邱伟华",
+			"doctor_user_id": "27415711",
+			"virtual_hospital_department_detail": [
+				"N81632607586|演示互联网医院（测试用）|a3642781-4891-491b-9ff0-82341f46a691000|内分泌科1|7f67af54-cff3-11e1-831f-5cf9dd2e7135|内分泌科|0|100||0",
+				"N81829474722|乌镇微医互联网医院|4d7e20ba-5116-4e7f-967a-77a2dc2c26c9000|普外科|7f67c1f6-cff3-11e1-831f-5cf9dd2e7135|普外科|0|100||0",
+				"N81819594432|上海微医医院互联网医院|655aeee8-cbc5-4db9-8ffd-2a16e06e7643000|外科|7f67c1f6-cff3-11e1-831f-5cf9dd2e7135|普外科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "698c6a85-fcd1-4c4d-a5db-3b5517066df6000",
+			"hospital_department_detail": [
+				"dde98fc9-4183-48ee-8c84-453058fa7fe3000|上海交通大学医学院附属瑞金医院|2ee49d42-700e-4c3a-a71c-6e5a4a74a9c7000|普通外科|7f67c1f6-cff3-11e1-831f-5cf9dd2e7135|普外科|0|100||0|上海|2|三级甲等|0|黄浦区|3306|1|17d85eb9-9470-43eb-b2de-606e84dce23b000@61410|7f67b77e-cff3-11e1-831f-5cf9dd2e7135|上海交通大学医学院附属瑞金医院",
+				"dde98fc9-4183-48ee-8c84-453058fa7fe3000|上海交通大学医学院附属瑞金医院|a742c7ca-5333-44f5-93ff-c48b3a700743000|门诊普外|7f67c1f6-cff3-11e1-831f-5cf9dd2e7135|普外科|0|100||0|上海|2|三级甲等|0|黄浦区|3306|1|17d85eb9-9470-43eb-b2de-606e84dce23b000@61410|7f67b77e-cff3-11e1-831f-5cf9dd2e7135|上海交通大学医学院附属瑞金医院",
+				"9a99af1a-c720-11e1-913c-5cf9dd2e7135000|上海交通大学医学院附属瑞金医院古北分院|04230e6a-8375-4d3b-b4d8-4c3acfa5d2f2000|普外科|7f67c1f6-cff3-11e1-831f-5cf9dd2e7135|普外科|0|100||0|上海|2|二级乙等|3|长宁区|3307|1|17d85eb9-9470-43eb-b2de-606e84dce23b000@61410|7f67b77e-cff3-11e1-831f-5cf9dd2e7135|上海交通大学医学院附属瑞金医院",
+				"6994072d-6444-4eca-a6ea-cd8909f8119a000|上海国际医学中心|fd477f78-9e22-45af-8a44-29911d65e734000|头颈外科|7f67b77e-cff3-11e1-831f-5cf9dd2e7135|外科|0|100||0|上海|2|对外综合|2|浦东新区|3311|2||7f67b77e-cff3-11e1-831f-5cf9dd2e7135|",
+				"b5a54f47-3519-45bf-bcf0-3ce68082779c000|上海嘉静门诊部|a5295ed2-54f3-4c2e-9bc7-bcad2aec083d000|普外科|7f6933ce-cff3-11e1-831f-5cf9dd2e7135|未定义|0|100||0|上海|2|对外综合|9|静安区|3309|2||7f69043a-cff3-11e1-831f-5cf9dd2e7135|",
+				"8cc4a402-1df7-4506-864f-321a62350969000|上海嘉会国际医院|468ddd8f-f424-4616-9765-85bc58d77f54000|普外科|7f6933ce-cff3-11e1-831f-5cf9dd2e7135|未定义|0|100||0|上海|2|对外综合|11|徐汇区|3315|2||7f69043a-cff3-11e1-831f-5cf9dd2e7135|"
+			]
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 5,
+				"doctor_name": "杨隽钧",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "97a31d09-c720-11e1-913c-5cf9dd2e7135000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": 0,
+				"device_id": ""
+			},
+			"doctor_name": "杨隽钧",
+			"doctor_user_id": "35555368",
+			"virtual_hospital_department_detail": [
+				"N81829474722|乌镇微医互联网医院|7f312ed6-9e24-4fb5-b053-650650229060000|妇科|7f67f3d8-cff3-11e1-831f-5cf9dd2e7135|妇科|0|100||0",
+				"N81632607586|演示互联网医院（测试用）|c2205648-7512-4dd7-b3df-256ba3d82b62000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "97a31d09-c720-11e1-913c-5cf9dd2e7135000",
+			"hospital_department_detail": [
+				"17634310-b567-4d21-8a02-20dc15e90da5000|北京协和医院|5625b7df-38df-40a9-af49-64f86aaf1034000|妇科|7f67f3d8-cff3-11e1-831f-5cf9dd2e7135|妇科|0|100||0|北京|1|三级甲等|0|东城区|3328|1|ca0a5e2b-b546-4596-bd1b-c704698971cd000@61411|7f67f180-cff3-11e1-831f-5cf9dd2e7135|北京协和医院",
+				"6da91a0d-c27a-4815-9ef8-d527695d9590000|微医全科（北京西单）中心|ce3484e5-06ac-4421-910c-56bca3927167000|妇科|7f67f3d8-cff3-11e1-831f-5cf9dd2e7135|妇科|0|100||0|北京|1|对外综合|1|西城区|3329|2|ca0a5e2b-b546-4596-bd1b-c704698971cd000@61411|7f67f180-cff3-11e1-831f-5cf9dd2e7135|"
+			],
+			"live_consult_online": 0
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 6,
+				"doctor_name": "钟芸诗",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "c31a088d-a363-457b-8b6f-ffc0390d4b62000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": 0,
+				"device_id": ""
+			},
+			"doctor_user_id": "22358788",
+			"virtual_hospital_department_detail": [
+				"N81829474722|乌镇微医互联网医院|4d7e20ba-5116-4e7f-967a-77a2dc2c26c9000|普外科|7f67c1f6-cff3-11e1-831f-5cf9dd2e7135|普外科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "c31a088d-a363-457b-8b6f-ffc0390d4b62000",
+			"hospital_department_detail": [
+				"125336070937502000|复旦大学附属中山医院|125809950754835000|普外科|7f67c1f6-cff3-11e1-831f-5cf9dd2e7135|普外科|0|100||0|上海|2|三级甲等|0|徐汇区|3315|1|17d85eb9-9470-43eb-b2de-606e84dce23b000@61410|7f67b77e-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属中山医院",
+				"125336070937502000|复旦大学附属中山医院|0434e36c-6bb9-4895-9d65-0f7d9c720481000|内镜中心高级专家门诊|c3e596bf-aa66-4714-9af0-474ccf331915|内镜科|0|100||0|上海|2|三级甲等|1|徐汇区|3315|1||7f69043a-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属中山医院",
+				"125336070937502000|复旦大学附属中山医院|b7a73fe0-92bf-4727-8499-02785b11e74c000|内镜中心|7f67c1f6-cff3-11e1-831f-5cf9dd2e7135|普外科|0|100||0|上海|2|三级甲等|1|徐汇区|3315|1|17d85eb9-9470-43eb-b2de-606e84dce23b000@61410|7f67b77e-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属中山医院",
+				"125336070937502000|复旦大学附属中山医院|f6883694-6963-41cc-8f5e-cd21aba4dd88000|国际医疗部|7f69043a-cff3-11e1-831f-5cf9dd2e7135|其他|0|100||0|上海|2|三级甲等|4|徐汇区|3315|1||7f69043a-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属中山医院"
+			],
+			"doctor_name": "钟芸诗",
+			"live_consult_online": 0
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 7,
+				"doctor_name": "王月华",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "220a95e6-b95b-49aa-9c1d-9a250ff18b0d000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": 0,
+				"device_id": ""
+			},
+			"doctor_name": "王月华",
+			"doctor_user_id": "20833191",
+			"virtual_hospital_department_detail": [
+				"N81829474722|乌镇微医互联网医院|310191d7-589d-400c-9adc-07055defca70000|皮肤科|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|皮肤性病科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "220a95e6-b95b-49aa-9c1d-9a250ff18b0d000",
+			"hospital_department_detail": [
+				"125336754304601000|复旦大学附属华山医院|125617797246614000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|1|静安区|3309|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"fb60b555-d22d-4229-b79c-ce9e96c82863000|复旦大学附属华山医院浦东院区|6394c2f9-468e-46cf-b42f-629a901bb98d000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|1|浦东新区|3311|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院"
+			],
+			"live_consult_online": 0
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 8,
+				"doctor_name": "田秦杰",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "424c286b-49d3-4df3-ba9a-c64ab60df2cd000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": 0,
+				"device_id": ""
+			},
+			"doctor_name": "田秦杰",
+			"doctor_user_id": "23645489",
+			"virtual_hospital_department_detail": [
+				"720273b2-6048-4034-8115-9e9da6d9377a000|乌镇互联网医院（医联体）|b0c3f036-150a-405f-b73e-0f0ca68bb655000|生殖内分泌|7f67fde2-cff3-11e1-831f-5cf9dd2e7135|不孕不育科|0|100||0",
+				"N81829474722|乌镇微医互联网医院|7f312ed6-9e24-4fb5-b053-650650229060000|妇科|7f67f3d8-cff3-11e1-831f-5cf9dd2e7135|妇科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "424c286b-49d3-4df3-ba9a-c64ab60df2cd000",
+			"hospital_department_detail": [
+				"17634310-b567-4d21-8a02-20dc15e90da5000|北京协和医院|1fe45af9-df86-49f7-a428-9eca1608cfae000|妇科内分泌|7f67f3d8-cff3-11e1-831f-5cf9dd2e7135|妇科|0|100||0|北京|1|三级甲等|1|东城区|3328|1|ca0a5e2b-b546-4596-bd1b-c704698971cd000@61411|7f67f180-cff3-11e1-831f-5cf9dd2e7135|北京协和医院",
+				"9a975aad-c720-11e1-913c-5cf9dd2e7135000|北京协和医院西院|99d3f192-c720-11e1-913c-5cf9dd2e7135000|妇产科|14c8704e-fc99-4e72-b6d1-d790508903ca|妇产科|0|100||0|北京|1|三级甲等|1|西城区|3329|1|3bb012df-4f3a-4582-9864-6289d31e8d8b000@61411|7f67f180-cff3-11e1-831f-5cf9dd2e7135|北京协和医院",
+				"6da91a0d-c27a-4815-9ef8-d527695d9590000|微医全科（北京西单）中心|6936f463-063b-446d-babc-b3a20d6e0fa7000|妇科内分泌|7f67f3d8-cff3-11e1-831f-5cf9dd2e7135|妇科|0|100||0|北京|1|对外综合|1|西城区|3329|2|ca0a5e2b-b546-4596-bd1b-c704698971cd000@61411|7f67f180-cff3-11e1-831f-5cf9dd2e7135|",
+				"23f62f28-927d-425b-b17a-61ba5330a44b000|北京天伦医院|7dd94774-a2b7-4bd1-ad54-c185e72b0f04000|生殖科|7f67fde2-cff3-11e1-831f-5cf9dd2e7135|不孕不育科|0|100||0|北京|1|对外综合|101|朝阳区|3327|2|3bb012df-4f3a-4582-9864-6289d31e8d8b000@61411|12a47fb0-b579-400a-938e-b333d6f87f78|"
+			],
+			"live_consult_online": 0
+		},
+		{
+			"item_search_param": {
+				"user_id": "",
+				"score": 0,
+				"offline_tag_score": -99,
+				"recommend_city": "",
+				"online_tag_score": -99,
+				"sort_no": 9,
+				"doctor_name": "卢忠",
+				"specialty_disease": [],
+				"standard_department_top3": null,
+				"doctor_uuid": "125655570506866000",
+				"buried_key": "_1693300232245",
+				"custom_city": null,
+				"live_consult_online": 0,
+				"device_id": ""
+			},
+			"doctor_name": "卢忠",
+			"doctor_user_id": "21466134",
+			"virtual_hospital_department_detail": [
+				"N81829474722|乌镇微医互联网医院|310191d7-589d-400c-9adc-07055defca70000|皮肤科|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|皮肤性病科|0|100||0"
+			],
+			"putian_weight": 1,
+			"doctor_uuid": "125655570506866000",
+			"hospital_department_detail": [
+				"125336754304601000|复旦大学附属华山医院|125617797246614000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|0|静安区|3309|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"fb60b555-d22d-4229-b79c-ce9e96c82863000|复旦大学附属华山医院浦东院区|9a61b3d2-8e43-4ed5-a94a-a673fb6e305d000|皮肤激光|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|1|浦东新区|3311|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院",
+				"fb60b555-d22d-4229-b79c-ce9e96c82863000|复旦大学附属华山医院浦东院区|6394c2f9-468e-46cf-b42f-629a901bb98d000|皮肤科|7f688f14-cff3-11e1-831f-5cf9dd2e7135|皮肤科|0|100||0|上海|2|三级甲等|2|浦东新区|3311|1|728f7f79-f75a-46d6-b4bb-11df3ae8eaad000@61413|7f688cb2-cff3-11e1-831f-5cf9dd2e7135|复旦大学附属华山医院"
+			],
+			"live_consult_online": 0
+		}
+	],
+	"qtime": 166,
+	"spellchecked_q": "",
+	"message": "successful",
+	"search_q": {
+		"q": null,
+		"type": null
+	},
+	"search_param": {
+		"offline_tag_is_valid": 0,
+		"area": null,
+		"scene": null,
+		"online_tag_is_valid": 0,
+		"ab_type": 0,
+		"buried_key": "_1693300232245",
+		"online_tag": {}
+	}
+}

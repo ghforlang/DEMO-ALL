@@ -20,6 +20,7 @@
     <modules>
         <module>agent-premain</module>
         <module>agent-agentmain</module>
+        <module>demo-Instrumentation</module>
     </modules>
 
     <dependencyManagement>

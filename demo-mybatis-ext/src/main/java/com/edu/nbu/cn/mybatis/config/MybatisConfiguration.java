@@ -1,6 +1,7 @@
 package com.edu.nbu.cn.mybatis.config;
 
 
+import com.edu.nbu.cn.mybatis.interceptor.ForbidWriteInterceptor;
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
@@ -69,5 +70,10 @@ public class MybatisConfiguration {
     public SqlSessionFactory sqlSessionFactory(){
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration());
         return sqlSessionFactory;
+    }
+
+    @Bean
+    public ForbidWriteInterceptor forbidWriteInterceptor(){
+        return new ForbidWriteInterceptor();
     }
 }
