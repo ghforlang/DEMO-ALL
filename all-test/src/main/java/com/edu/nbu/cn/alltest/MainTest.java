@@ -20,7 +20,7 @@ public class MainTest {
     }
 
     private static void test2(){
-        RequestClient client = new RequestClient("wy26YCLN7DJC3h23", "j8563Z62E5q8poL8w7A26V0n85H1GP03", "13JZGx91X");
+        RequestClient client = new RequestClient("my26YCLN7DJC3h23", "j8563Z62E5q8poL8w7A26V0n85H1GP03", "13JZGx91X");
 //        client.setReqUrl("http://openapi.guahao.com/openapi");
         client.setReqUrl("http://pre-openapi.guahao.com/openapi");
         TradeCyclepayTobReq req = new TradeCyclepayTobReq();
@@ -34,7 +34,7 @@ public class MainTest {
         subReq.setDescription("周期扣款订单测试");
         subReq.setTitle("周期扣款订单测试");
         subReq.setPartnerIdentifier("coop_feier");
-        subReq.setNotifyUrl("https://backnotify.kms9.cn/wyyzk/payback");
+        subReq.setNotifyUrl("https://backnotify.kms9.cn/myyzk/payback");
         req.setReq(subReq);
         TradeCyclepayTobRes res = client.execute(req, new TypeReference<TradeCyclepayTobRes>() {});
         System.out.println(JSON.toJSONString(res));

@@ -22,27 +22,27 @@ import javax.annotation.Resource;
  */
 
 @Configuration
-public class WYCacheConfiguration {
+public class MyCacheConfiguration {
 
     @Resource
-    private WYCacheProperties wyCacheProperties;
+    private MyCacheProperties myCacheProperties;
 
     @Bean
     public RedisConnectionFactory connectionFactory(){
-        RedisSentinelConfiguration redisSentinelConfiguration = new RedisSentinelConfiguration(wyCacheProperties.getMaster(), wyCacheProperties.getNodes());
+        RedisSentinelConfiguration redisSentinelConfiguration = new RedisSentinelConfiguration(myCacheProperties.getMaster(), myCacheProperties.getNodes());
 
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxIdle(wyCacheProperties.getMaxIdle());
-        jedisPoolConfig.setMinIdle(wyCacheProperties.getMinIdle());
-        jedisPoolConfig.setMaxTotal(wyCacheProperties.getMaxActive());
-        jedisPoolConfig.setMaxWaitMillis(wyCacheProperties.getMaxWait());
+        jedisPoolConfig.setMaxIdle(myCacheProperties.getMaxIdle());
+        jedisPoolConfig.setMinIdle(myCacheProperties.getMinIdle());
+        jedisPoolConfig.setMaxTotal(myCacheProperties.getMaxActive());
+        jedisPoolConfig.setMaxWaitMillis(myCacheProperties.getMaxWait());
 
         JedisConnectionFactory connectionFactory = new JedisConnectionFactory(redisSentinelConfiguration);
-        connectionFactory.setPassword(wyCacheProperties.getPassword());
+        connectionFactory.setPassword(myCacheProperties.getPassword());
         return connectionFactory;
     }
 
-    @Bean("wyRedisTemplate")
+    @Bean("myRedisTemplate")
     @ConditionalOnBean(RedisConnectionFactory.class)
     public RedisTemplate<String, Object> redisTemplate(){
         //创建Json序列化对象

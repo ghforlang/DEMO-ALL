@@ -13,18 +13,18 @@ import javax.annotation.Resource;
  * @version 1.0 2023/2/6-8:06 PM
  * @since 1.0
  */
-@EnableConfigurationProperties(WYCacheProperties.class)
+@EnableConfigurationProperties(MyCacheProperties.class)
 @Configuration
-@ConditionalOnBean(WYCacheConfiguration.class)
-public class WYCacheAutoConfiguration {
+@ConditionalOnBean(MyCacheConfiguration.class)
+public class MyCacheAutoConfiguration {
 
     @Resource
-    private RedisTemplate wyRedisTemplate;
+    private RedisTemplate myRedisTemplate;
 
     @Bean
-    public RedisUtils wyRedisUtil(){
+    public RedisUtils myRedisUtil(){
         RedisUtils redisUtil = new RedisUtils();
-        redisUtil.setRedisTemplate(wyRedisTemplate);
+        redisUtil.setRedisTemplate(myRedisTemplate);
         return redisUtil;
     }
 }

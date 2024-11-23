@@ -12,11 +12,11 @@ import java.util.Set;
  * @version 1.0 2023/2/6-6:03 PM
  * @since 1.0
  */
-@ConfigurationProperties("wy.redis.sentinel")
+@ConfigurationProperties("my.redis.sentinel")
 @Getter
 @Setter
-@Component("wyCacheProperties")
-public class WYCacheProperties {
+@Component("myCacheProperties")
+public class MyCacheProperties {
     private Integer database;
     private String password;
     private String master;
